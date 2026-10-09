@@ -1,23 +1,28 @@
 import { NAV } from "../components/site";
+import { LogoMark, Arrow } from "../components/ui";
 
 export default function HomeHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200/80 bg-[#faf9f7]/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-[#16131f]/8 glass">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
-        <a href="/" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-zinc-900 text-lg">✍️</span>
-          <span className="leading-tight">
-            <span className="block font-extrabold tracking-tight">StudySathi</span>
-            <span className="block text-[11px] font-medium text-zinc-500">Assignments • Notes • All India</span>
-          </span>
+        <a href="/" aria-label="StudySathi home">
+          <LogoMark />
         </a>
-        <nav className="hidden md:flex items-center gap-5 text-sm font-medium text-zinc-600">
+        <nav className="hidden items-center gap-1 text-sm font-semibold text-zinc-600 md:flex">
           {NAV.map((n) => (
-            <a key={n.label} href={n.href} className="hover:text-zinc-950">{n.label}</a>
+            <a key={n.label} href={n.href} className="rounded-full px-3 py-1.5 transition hover:bg-[#16131f]/5 hover:text-[#16131f]">{n.label}</a>
           ))}
-          <a href="/chandigarh" className="rounded-full border border-amber-400 bg-amber-50 px-3 py-1 font-bold text-amber-800 hover:bg-amber-100">📍 Chandigarh</a>
+          <a href="/chandigarh" className="ml-1 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-400 px-3.5 py-1.5 font-bold text-[#16131f] shadow-[0_4px_14px_-4px_rgb(245_158_11/.6)] transition hover:brightness-105">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z" stroke="currentColor" strokeWidth="2.2" />
+              <circle cx="12" cy="10" r="2.6" fill="currentColor" />
+            </svg>
+            Chandigarh
+          </a>
         </nav>
-        <a href="#order" className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-700">Order • ₹49+</a>
+        <a href="#order" className="btn-shine inline-flex items-center gap-1.5 rounded-full bg-[#16131f] px-5 py-2.5 text-sm font-bold text-white shadow-[0_8px_20px_-8px_rgb(22_19_31/.6)] transition hover:-translate-y-0.5">
+          Order • ₹49+ <Arrow />
+        </a>
       </div>
     </header>
   );

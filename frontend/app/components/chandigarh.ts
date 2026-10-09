@@ -5,7 +5,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "BA • B.Com • B.Sc • MA • MBA (UBS) • LLB",
     type: "University",
     orders: "4,200+ orders",
-    emoji: "🎓",
+    grad: "from-violet-400 to-purple-600",
   },
   {
     name: "UIET, Panjab University",
@@ -13,7 +13,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "B.E. CSE • ECE • ME • Practical files",
     type: "Engineering",
     orders: "1,150+ orders",
-    emoji: "💻",
+    grad: "from-sky-400 to-blue-600",
   },
   {
     name: "PEC Chandigarh",
@@ -21,7 +21,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "B.Tech • M.Tech • Workshop files",
     type: "Engineering",
     orders: "980+ orders",
-    emoji: "⚙️",
+    grad: "from-slate-400 to-slate-600",
   },
   {
     name: "Chandigarh University (CU)",
@@ -29,7 +29,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "B.Tech • BBA • MBA • BCA • Hotel Mgmt",
     type: "University",
     orders: "2,800+ orders",
-    emoji: "🏛️",
+    grad: "from-amber-400 to-orange-500",
   },
   {
     name: "Chitkara University",
@@ -37,7 +37,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "B.E. • BBA • Design • Nursing",
     type: "University",
     orders: "1,300+ orders",
-    emoji: "🏫",
+    grad: "from-rose-400 to-pink-600",
   },
   {
     name: "DAV College",
@@ -45,7 +45,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "BA • B.Com • B.Sc • MA",
     type: "Arts & Commerce",
     orders: "1,900+ orders",
-    emoji: "📚",
+    grad: "from-emerald-400 to-teal-600",
   },
   {
     name: "MCM DAV College for Women",
@@ -53,7 +53,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "BA • B.Com • B.Sc • PG Diploma",
     type: "Arts & Commerce",
     orders: "1,600+ orders",
-    emoji: "👩‍🎓",
+    grad: "from-fuchsia-400 to-purple-600",
   },
   {
     name: "GGDSD College",
@@ -61,7 +61,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "B.Com • BBA • BCA • B.Sc IT",
     type: "Arts & Commerce",
     orders: "1,450+ orders",
-    emoji: "📊",
+    grad: "from-cyan-400 to-sky-600",
   },
   {
     name: "Govt College for Girls (GCG)",
@@ -69,7 +69,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "BA • B.Sc • B.Com • M.Sc",
     type: "Arts & Commerce",
     orders: "1,100+ orders",
-    emoji: "🌸",
+    grad: "from-pink-400 to-rose-600",
   },
   {
     name: "PGGC Sector 11 & Sector 46",
@@ -77,7 +77,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "BA • B.Com • BCA • PG Courses",
     type: "Arts & Commerce",
     orders: "950+ orders",
-    emoji: "🏫",
+    grad: "from-orange-400 to-red-500",
   },
   {
     name: "CCET Chandigarh",
@@ -85,7 +85,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "B.E. CSE • Civil • Mech • Practicals",
     type: "Engineering",
     orders: "720+ orders",
-    emoji: "🔧",
+    grad: "from-indigo-400 to-blue-600",
   },
   {
     name: "GMCH Sector 32 & PGIMER",
@@ -93,7 +93,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "Nursing • MBBS notes • Anatomy files",
     type: "Medical",
     orders: "860+ orders",
-    emoji: "🩺",
+    grad: "from-teal-400 to-emerald-600",
   },
   {
     name: "IGNOU Regional Centre",
@@ -101,7 +101,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "BAG • BCOMG • MAPC • MBA • MCA",
     type: "Distance",
     orders: "3,100+ orders",
-    emoji: "📝",
+    grad: "from-yellow-400 to-amber-600",
   },
   {
     name: "UILS & Dept. of Laws, PU",
@@ -109,7 +109,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "BA LLB • LLB • LLM projects",
     type: "Law",
     orders: "640+ orders",
-    emoji: "⚖️",
+    grad: "from-stone-500 to-stone-700",
   },
   {
     name: "IISER Mohali • NIPER Mohali",
@@ -117,7 +117,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "BS-MS • Pharma • Lab records",
     type: "Science",
     orders: "410+ orders",
-    emoji: "🔬",
+    grad: "from-lime-400 to-emerald-600",
   },
   {
     name: "GCECT + Polytechnics Tricity",
@@ -125,7 +125,7 @@ export const CHANDIGARH_COLLEGES = [
     courses: "Diploma • B.Tech LEET files",
     type: "Engineering",
     orders: "520+ orders",
-    emoji: "🧰",
+    grad: "from-blue-400 to-indigo-600",
   },
 ];
 

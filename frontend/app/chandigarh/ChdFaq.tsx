@@ -2,24 +2,40 @@
 import { useState } from "react";
 import { CHANDIGARH_FAQS } from "../components/chandigarh";
 import { FAQS } from "../components/catalog";
+import { Eyebrow } from "../components/ui";
 
 export default function ChdFaq() {
   const [open, setOpen] = useState<number | null>(0);
   const all = [...CHANDIGARH_FAQS, ...FAQS];
   return (
-    <section id="faq" className="mx-auto max-w-3xl px-4 pt-14 pb-4">
-      <p className="text-center text-[12px] font-extrabold tracking-[0.2em] text-amber-600">CHANDIGARH FAQ</p>
-      <h2 className="text-center text-3xl md:text-4xl font-extrabold tracking-tight">Questions? <span className="font-hand text-amber-600 text-[1.15em]">Answered.</span></h2>
-      <div className="mt-6 space-y-3">
-        {all.map((f, i) => (
-          <div key={f.q} className={`rounded-2xl border-2 overflow-hidden transition ${open === i ? "border-zinc-900 bg-white shadow-[4px_4px_0_#18181b]" : "border-zinc-200 bg-white"}`}>
-            <button onClick={() => setOpen(open === i ? null : i)} className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-bold text-[15px]">
-              <span>{f.q}</span>
-              <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 ${open === i ? "bg-zinc-900 text-white border-zinc-900" : "border-zinc-200"}`}>{open === i ? "−" : "+"}</span>
-            </button>
-            {open === i && <p className="px-5 pb-5 text-[15px] leading-relaxed text-zinc-600">{f.a}</p>}
-          </div>
-        ))}
+    <section id="faq" className="mx-auto max-w-3xl px-4 pb-4 pt-16">
+      <div className="text-center">
+        <Eyebrow>Chandigarh FAQ</Eyebrow>
+        <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-[2.6rem] md:leading-[1.08]">
+          Questions? <span className="font-hand text-gradient text-[1.12em]">Answered.</span>
+        </h2>
+      </div>
+      <div className="mt-7 space-y-3">
+        {all.map((f, i) => {
+          const isOpen = open === i;
+          return (
+            <div key={f.q} className={`overflow-hidden rounded-2xl border transition-all duration-300 ${isOpen ? "border-[#16131f]/15 bg-white shadow-[0_16px_36px_-16px_rgb(22_19_31/.25)]" : "border-[#16131f]/8 bg-white/70 hover:border-[#16131f]/25 hover:bg-white"}`}>
+              <button onClick={() => setOpen(isOpen ? null : i)} aria-expanded={isOpen} className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-[15px] font-bold tracking-tight">
+                <span>{f.q}</span>
+                <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition-all duration-300 ${isOpen ? "rotate-45 bg-[#16131f] text-white" : "bg-[#16131f]/5 text-[#16131f]"}`}>
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden>
+                    <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                  </svg>
+                </span>
+              </button>
+              <div className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                <div className="overflow-hidden">
+                  <p className="px-5 pb-5 text-[15px] leading-relaxed text-zinc-600">{f.a}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

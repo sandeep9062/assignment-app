@@ -1,23 +1,18 @@
+import { LogoMark, Arrow } from "../components/ui";
+
 export default function ChdHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200/80 bg-[#faf9f7]/90 backdrop-blur">
-      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
-        <a href="/chandigarh" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-zinc-900 text-lg">✍️</span>
-          <span className="leading-tight">
-            <span className="block font-extrabold tracking-tight">StudySathi <span className="text-amber-600">Chandigarh</span></span>
-            <span className="block text-[11px] font-medium text-zinc-500">Assignments • Notes • Tricity Delivery</span>
-          </span>
+    <header className="glass sticky top-0 z-40 border-b border-[#16131f]/8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+        <a href="/chandigarh" aria-label="StudySathi Chandigarh home">
+          <LogoMark sub="Chandigarh" />
         </a>
-        <nav className="hidden md:flex items-center gap-5 text-sm font-medium text-zinc-600">
-          <a href="#services" className="hover:text-zinc-950">Services</a>
-          <a href="#notes" className="hover:text-zinc-950">Notes</a>
-          <a href="#pricing" className="hover:text-zinc-950">Pricing</a>
-          <a href="#colleges" className="hover:text-zinc-950">Colleges</a>
-          <a href="#areas" className="hover:text-zinc-950">Areas</a>
-          <a href="#faq" className="hover:text-zinc-950">FAQ</a>
+        <nav className="hidden items-center gap-1 text-sm font-semibold text-zinc-600 md:flex">
+          {[["Services", "#services"], ["Notes", "#notes"], ["Pricing", "#pricing"], ["Colleges", "#colleges"], ["Areas", "#areas"], ["FAQ", "#faq"]].map(([l, h]) => (
+            <a key={l} href={h} className="rounded-full px-3 py-1.5 transition hover:bg-[#16131f]/5 hover:text-[#16131f]">{l}</a>
+          ))}
         </nav>
-        <a href="#order" className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-700">Order • ₹49+</a>
+        <a href="#order" className="btn-shine inline-flex items-center gap-1.5 rounded-full bg-[#16131f] px-5 py-2.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5">Order • ₹49+ <Arrow /></a>
       </div>
     </header>
   );

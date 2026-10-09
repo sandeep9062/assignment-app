@@ -24,8 +24,9 @@ export const MARQUEE = [
 
 export const SERVICES = [
   {
-    icon: "📝",
-    color: "bg-amber-100 text-amber-900 border-amber-200",
+    icon: "pen",
+    grad: "from-amber-400 to-orange-500",
+    soft: "bg-amber-50",
     badge: "Most ordered",
     title: "Custom Assignments",
     desc: "Handwritten or typed, as per your university format — IGNOU, DU SOL, Amity, LPU, B.Tech, MBA & more.",
@@ -35,8 +36,9 @@ export const SERVICES = [
     msg: "Hi StudySathi! I need help with my assignment. Subject: ___, University: ___, Deadline: ___",
   },
   {
-    icon: "📓",
-    color: "bg-violet-100 text-violet-900 border-violet-200",
+    icon: "note",
+    grad: "from-violet-400 to-purple-600",
+    soft: "bg-violet-50",
     badge: "Bestseller",
     title: "Handwritten Notes",
     desc: "Neat, topper-style notes with diagrams, mnemonics & highlights. PDF + spiral courier.",
@@ -46,8 +48,9 @@ export const SERVICES = [
     msg: "Hi StudySathi! I want handwritten notes. Subject: ___, Class/Course: ___",
   },
   {
-    icon: "🔬",
-    color: "bg-emerald-100 text-emerald-900 border-emerald-200",
+    icon: "flask",
+    grad: "from-emerald-400 to-teal-600",
+    soft: "bg-emerald-50",
     badge: "Practical files",
     title: "Practical Files & Projects",
     desc: "Physics, Chemistry, CS & Engineering practicals with readings, graphs & viva questions.",
@@ -57,8 +60,9 @@ export const SERVICES = [
     msg: "Hi StudySathi! I need a practical file / project. Subject: ___, Details: ___",
   },
   {
-    icon: "⚡",
-    color: "bg-rose-100 text-rose-900 border-rose-200",
+    icon: "bolt",
+    grad: "from-rose-400 to-pink-600",
+    soft: "bg-rose-50",
     badge: "24-hr delivery",
     title: "Exam Crash Kit",
     desc: "Last-minute weapon: important Q&A, previous-year solved papers & one-shot revision sheets.",
@@ -70,8 +74,8 @@ export const SERVICES = [
 ];
 
 export const STEPS = [
-  { n: "01", title: "Share details on WhatsApp", desc: "Send subject, university, pages & deadline. Free quote in 5 minutes.", icon: "💬" },
-  { n: "02", title: "Approve sample & price", desc: "1 free sample page in your preferred handwriting style.", icon: "✍️" },
-  { n: "03", title: "We write + send proof", desc: "Track progress with photo proofs, diagrams & cover page.", icon: "📸" },
-  { n: "04", title: "Pay & get PDF + courier", desc: "UPI / cards. Instant PDF + spiral courier in 3–5 days.", icon: "📦" },
+  { n: "01", title: "Share details on WhatsApp", desc: "Send subject, university, pages & deadline. Free quote in 5 minutes.", grad: "from-emerald-400 to-teal-500" },
+  { n: "02", title: "Approve sample & price", desc: "1 free sample page in your preferred handwriting style.", grad: "from-violet-400 to-purple-600" },
+  { n: "03", title: "We write + send proof", desc: "Track progress with photo proofs, diagrams & cover page.", grad: "from-amber-400 to-orange-500" },
+  { n: "04", title: "Pay & get PDF + courier", desc: "UPI / cards. Instant PDF + spiral courier in 3–5 days.", grad: "from-sky-400 to-blue-600" },
 ];

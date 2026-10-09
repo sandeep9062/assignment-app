@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#faf9f7] text-zinc-900">
+      <body className="min-h-full flex flex-col bg-[#faf8f4] text-[#16131f]">
         {children}
       </body>
     </html>

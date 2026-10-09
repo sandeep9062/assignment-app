@@ -34,10 +34,10 @@ export const FAQS = [
 ];
 
 export const WHY_US = [
-  ["✍️", "Your handwriting, matched", "Send 1 photo of your writing — we match slant, spacing & style."],
-  ["🛡️", "Plagiarism-free promise", "Every order written fresh. Free report + unlimited revisions."],
-  ["⏰", "Deadline-or-refund", "Date committed in writing. Miss it = full refund. 99.2% on-time."],
-  ["📸", "Live photo proofs", "Watch your work being written with progress photos & videos."],
-  ["🔒", "100% private", "Your name, college & order never shared. Ever."],
-  ["💰", "Pay in parts", "Only 30% to start. Balance after you approve proofs."],
+  ["pen", "Your handwriting, matched", "Send 1 photo of your writing — we match slant, spacing & style."],
+  ["shield", "Plagiarism-free promise", "Every order written fresh. Free report + unlimited revisions."],
+  ["clock", "Deadline-or-refund", "Date committed in writing. Miss it = full refund. 99.2% on-time."],
+  ["camera", "Live photo proofs", "Watch your work being written with progress photos & videos."],
+  ["lock", "100% private", "Your name, college & order never shared. Ever."],
+  ["wallet", "Pay in parts", "Only 30% to start. Balance after you approve proofs."],
 ];

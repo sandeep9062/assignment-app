@@ -11,7 +11,7 @@ import HomeCta from "./home/HomeCta";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#faf9f7] text-zinc-900">
+    <div className="min-h-screen bg-[#faf8f4] text-[#16131f]">
       <HomeTop />
       <HomeHeader />
       <main>
