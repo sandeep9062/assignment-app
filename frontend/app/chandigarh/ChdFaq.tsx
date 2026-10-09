@@ -19,10 +19,10 @@ export default function ChdFaq() {
         {all.map((f, i) => {
           const isOpen = open === i;
           return (
-            <div key={f.q} className={`overflow-hidden rounded-2xl border transition-all duration-300 ${isOpen ? "border-[#16131f]/15 bg-white shadow-[0_16px_36px_-16px_rgb(22_19_31/.25)]" : "border-[#16131f]/8 bg-white/70 hover:border-[#16131f]/25 hover:bg-white"}`}>
+            <div key={f.q} className={`overflow-hidden rounded-2xl border transition-all duration-300 ${isOpen ? "border-ink/15 bg-white shadow-[0_16px_36px_-16px_rgb(22_19_31/.25)]" : "border-ink/8 bg-white/70 hover:border-ink/25 hover:bg-white"}`}>
               <button onClick={() => setOpen(isOpen ? null : i)} aria-expanded={isOpen} className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-[15px] font-bold tracking-tight">
                 <span>{f.q}</span>
-                <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition-all duration-300 ${isOpen ? "rotate-45 bg-[#16131f] text-white" : "bg-[#16131f]/5 text-[#16131f]"}`}>
+                <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition-all duration-300 ${isOpen ? "rotate-45 bg-ink text-white" : "bg-ink/5 text-ink"}`}>
                   <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden>
                     <path d="M7 1v12M1 7h12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
                   </svg>

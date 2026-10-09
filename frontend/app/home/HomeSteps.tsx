@@ -12,7 +12,7 @@ export default function HomeSteps() {
     <section id="order" className="mx-auto max-w-6xl px-4 pt-12">
       <div className="grid gap-4 md:grid-cols-3">
         {ITEMS.map((s, i) => (
-          <div key={s.t} className="card-lift group relative overflow-hidden rounded-3xl border border-[#16131f]/8 bg-white p-5">
+          <div key={s.t} className="card-lift group relative overflow-hidden rounded-3xl border border-ink/8 bg-white p-5">
             <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-amber-100 to-violet-100 opacity-0 blur-2xl transition group-hover:opacity-100" aria-hidden />
             <div className="relative flex gap-4">
               <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br text-white shadow-md ${s.grad}`}>
@@ -33,13 +33,13 @@ export default function HomeSteps() {
         <div className="dotted-bg-light absolute inset-0 opacity-20" aria-hidden />
         <div className="relative flex flex-wrap items-center justify-between gap-3">
           <p className="text-[15px]"><strong>In Chandigarh Tricity?</strong> Get <span className="font-bold text-amber-300">same-day hand delivery</span> + Sec-17 pickup.</p>
-          <a href="/chandigarh" className="btn-shine inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-400 px-4 py-2 text-[13px] font-extrabold text-[#16131f] transition hover:-translate-y-0.5">Open Chandigarh page <Arrow /></a>
+          <a href="/chandigarh" className="btn-shine inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-400 px-4 py-2 text-[13px] font-extrabold text-ink transition hover:-translate-y-0.5">Open Chandigarh page <Arrow /></a>
         </div>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-2 text-[13px]">
         <span className="font-bold text-zinc-500">We follow formats of:</span>
         {["IGNOU", "DU SOL", "AKTU", "VTU", "Amity", "LPU", "Mumbai Univ", "PU Chandigarh"].map((u) => (
-          <a key={u} href={waLink(`Hi StudySathi! I'm from ${u}. I need: Subject ___, Pages ___, Deadline ___`)} className="rounded-full border border-[#16131f]/10 bg-white px-3 py-1 font-semibold shadow-sm transition hover:-translate-y-0.5 hover:border-[#16131f]">{u}</a>
+          <a key={u} href={waLink(`Hi StudySathi! I'm from ${u}. I need: Subject ___, Pages ___, Deadline ___`)} className="rounded-full border border-ink/10 bg-white px-3 py-1 font-semibold shadow-sm transition hover:-translate-y-0.5 hover:border-ink">{u}</a>
         ))}
       </div>
     </section>

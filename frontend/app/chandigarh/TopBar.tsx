@@ -2,7 +2,7 @@ import { waLink } from "../components/site";
 
 export default function ChdTopBar() {
   return (
-    <div className="bg-[#14111f] text-[13px] text-white">
+    <div className="bg-ink-strong text-[13px] text-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2">
         <p className="flex min-w-0 items-center gap-2.5">
           <span className="relative flex h-2 w-2 shrink-0">

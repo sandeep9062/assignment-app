@@ -17,8 +17,8 @@ export default function HomeHero() {
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pb-12 pt-12 md:pt-16 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="rise">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#16131f] px-3.5 py-1.5 text-[12px] font-bold text-white shadow-md">
-              <span className="grid h-4 w-4 place-items-center rounded-full bg-amber-400 text-[9px] text-[#16131f]">✎</span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-1.5 text-[12px] font-bold text-white shadow-md">
+              <span className="grid h-4 w-4 place-items-center rounded-full bg-amber-400 text-[9px] text-ink">✎</span>
               IGNOU • DU SOL • B.Tech • MBA
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-white/80 px-3.5 py-1.5 text-[12px] font-bold text-emerald-800 backdrop-blur">
@@ -36,13 +36,13 @@ export default function HomeHero() {
             , done for you
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-zinc-600">
-            Plagiarism-free, in <strong className="font-bold text-[#16131f]">your handwriting style</strong>. PDF in 24–48 hrs + courier anywhere in India. Free sample before you pay full.
+            Plagiarism-free, in <strong className="font-bold text-ink">your handwriting style</strong>. PDF in 24–48 hrs + courier anywhere in India. Free sample before you pay full.
           </p>
           <div className="rise-1 mt-7 flex flex-col gap-3 sm:flex-row">
             <a href={waLink("Hi StudySathi! I need help with my assignment. Subject: ___, University: ___, Deadline: ___")} className="btn-shine inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-7 py-4 font-bold text-white shadow-lg transition hover:-translate-y-0.5">
               Get free quote in 5 min
             </a>
-            <a href="#pricing" className="inline-flex items-center justify-center gap-2 rounded-2xl border-[1.5px] border-[#16131f]/15 bg-white/80 px-7 py-4 font-bold backdrop-blur transition hover:-translate-y-0.5 hover:border-[#16131f]">
+            <a href="#pricing" className="inline-flex items-center justify-center gap-2 rounded-2xl border-[1.5px] border-ink/15 bg-white/80 px-7 py-4 font-bold backdrop-blur transition hover:-translate-y-0.5 hover:border-ink">
               Calculate price
             </a>
           </div>
@@ -69,8 +69,8 @@ export default function HomeHero() {
         </div>
         <div className="rise-2 relative mx-auto w-full max-w-md lg:max-w-none">
           <div className="absolute -inset-4 rotate-2 rounded-[30px] bg-gradient-to-br from-violet-300 via-fuchsia-200 to-amber-200 opacity-70" aria-hidden />
-          <div className="relative overflow-hidden rounded-[24px] border border-[#16131f]/10 bg-white shadow-xl">
-            <div className="flex items-center justify-between gap-3 bg-[#14111f] px-5 py-3.5 text-white">
+          <div className="relative overflow-hidden rounded-[24px] border border-ink/10 bg-white shadow-xl">
+            <div className="flex items-center justify-between gap-3 bg-ink-strong px-5 py-3.5 text-white">
               <p className="text-sm font-bold">IGNOU BAG — Assignment</p>
               <span className="rounded-full bg-emerald-400/15 px-2.5 py-1 text-[11px] font-extrabold text-emerald-300 ring-1 ring-emerald-400/40">SCORE 78/100</span>
             </div>
@@ -82,14 +82,14 @@ export default function HomeHero() {
             </div>
             <div className="flex items-center justify-between gap-3 border-t border-dashed border-zinc-200 bg-amber-50/60 px-5 py-4">
               <div><p className="text-[11px] font-extrabold tracking-[0.14em] text-zinc-500">HANDWRITTEN • 30 PAGES</p><p className="text-xl font-extrabold">₹2,370 <span className="text-sm font-medium text-zinc-400 line-through">₹3,200</span></p></div>
-              <a href={waLink("Hi! I want an IGNOU assignment like the sample. Subject: ___, Deadline: ___")} className="btn-shine rounded-full bg-[#16131f] px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5">Order similar</a>
+              <a href={waLink("Hi! I want an IGNOU assignment like the sample. Subject: ___, Deadline: ___")} className="btn-shine rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5">Order similar</a>
             </div>
           </div>
-          <div className="glass absolute -bottom-5 -left-3 rounded-2xl border border-[#16131f]/10 px-4 py-2.5 shadow-lg animate-float-slow sm:-left-6"><p className="text-[12px] font-bold">Your handwriting, matched</p></div>
-          <div className="absolute -right-2 -top-5 rounded-2xl bg-[#16131f] px-4 py-2.5 text-white shadow-lg animate-float-delayed sm:-right-4"><p className="text-[12px] font-bold">PDF + courier</p></div>
+          <div className="glass absolute -bottom-5 -left-3 rounded-2xl border border-ink/10 px-4 py-2.5 shadow-lg animate-float-slow sm:-left-6"><p className="text-[12px] font-bold">Your handwriting, matched</p></div>
+          <div className="absolute -right-2 -top-5 rounded-2xl bg-ink px-4 py-2.5 text-white shadow-lg animate-float-delayed sm:-right-4"><p className="text-[12px] font-bold">PDF + courier</p></div>
         </div>
       </div>
-      <div className="marquee-mask relative overflow-hidden border-y border-white/10 bg-[#14111f] py-3">
+      <div className="marquee-mask relative overflow-hidden border-y border-white/10 bg-ink-strong py-3">
         <div className="animate-marquee flex w-max gap-10 whitespace-nowrap text-[13px] font-bold tracking-wide text-amber-200/90">
           {[...MARQUEE, ...MARQUEE].map((m, i) => (
             <span key={i} className="flex items-center gap-10"><span className="text-amber-400">✦</span> {m}</span>

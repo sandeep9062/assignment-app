@@ -1,14 +1,92 @@
 @import "tailwindcss";
 
+/* ============================================================================
+   StudySathi — design tokens
+   Single source of truth for the colour system: warm paper canvas, deep ink
+   text, and amber / violet / emerald accents. Change a value here and it flows
+   through every utility that references it.
+   ============================================================================ */
+
 :root {
-  --background: #faf8f4;
-  --foreground: #16131f;
-  --ink: #16131f;
+  color-scheme: light;
+
+  /* Surfaces */
+  --canvas: #faf8f4;        /* page background — warm paper */
+  --surface: #ffffff;       /* cards, panels */
+  --surface-2: #f4f0e8;     /* subtle fills, inputs, table rows */
+  --surface-3: #ece6da;     /* hover fills */
+  --ink-strong: #14111f;    /* fixed dark panels — top bar, marquee, CTA */
+  --ink-strong-2: #0d0b16;
+
+  /* Text */
+  --ink: #16131f;           /* primary text + solid dark elements */
+  --muted: #57534e;         /* secondary text */
+  --faint: #8a857c;         /* tertiary / placeholder */
+
+  /* Lines */
+  --line: #e7e2d8;          /* hairline borders */
+  --line-strong: #d6cfc2;   /* stronger borders, dividers */
+
+  /* Brand + semantic accents */
+  --brand: #f59e0b;         /* amber — primary accent */
+  --brand-strong: #d97706;
+  --brand-soft: #fef3c7;
+  --accent: #7c3aed;        /* violet — secondary accent */
+  --accent-strong: #6d28d9;
+  --accent-soft: #ede9fe;
+  --success: #059669;       /* emerald — trust / WhatsApp */
+  --success-strong: #047857;
+  --success-soft: #d1fae5;
+  --danger: #e11d48;        /* rose — urgency */
+
+  /* Legacy aliases (existing var(--background)/var(--foreground) still work) */
+  --background: var(--canvas);
+  --foreground: var(--ink);
 }
 
+/* Warm, cohesive neutral scale. Replaces the default cool "zinc" greys so that
+   every text-zinc-* / border-zinc-* usage harmonises with the warm paper
+   canvas instead of clashing with it. Values are Tailwind's "stone" ramp. */
+@theme {
+  --color-zinc-50: #fafaf9;
+  --color-zinc-100: #f5f5f4;
+  --color-zinc-200: #e7e5e4;
+  --color-zinc-300: #d6d3d1;
+  --color-zinc-400: #a8a29e;
+  --color-zinc-500: #78716c;
+  --color-zinc-600: #57534e;
+  --color-zinc-700: #44403c;
+  --color-zinc-800: #292524;
+  --color-zinc-900: #1c1917;
+  --color-zinc-950: #0c0a09;
+}
+
+/* Semantic tokens exposed as Tailwind utilities — bg-canvas, text-ink,
+   border-line, bg-brand, text-accent, … `inline` makes the utilities read the
+   CSS variables directly, so overrides cascade everywhere at once. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink-strong: var(--ink-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-strong: var(--success-strong);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-background: var(--canvas);
+  --color-foreground: var(--ink);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-hand: var(--font-hand), cursive;
@@ -20,8 +98,8 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--canvas);
+  color: var(--ink);
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -36,14 +114,14 @@ body {
   background-image: repeating-linear-gradient(
     transparent,
     transparent 27px,
-    #e7e5e4 27px,
-    #e7e5e4 28px
+    var(--line) 27px,
+    var(--line) 28px
   );
   line-height: 28px;
 }
 
 .dotted-bg {
-  background-image: radial-gradient(rgb(22 19 31 / 0.13) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 14%, transparent) 1.2px, transparent 1.2px);
   background-size: 22px 22px;
 }
 .dotted-bg-light {
@@ -52,25 +130,25 @@ body {
 }
 .mesh-hero {
   background:
-    radial-gradient(38rem 22rem at 85% -5%, rgb(253 224 71 / 0.55), transparent 60%),
-    radial-gradient(34rem 24rem at -10% 20%, rgb(196 181 253 / 0.5), transparent 60%),
-    radial-gradient(30rem 20rem at 50% 110%, rgb(110 231 183 / 0.35), transparent 60%),
-    linear-gradient(#faf8f4, #faf8f4);
+    radial-gradient(38rem 22rem at 85% -5%, color-mix(in srgb, var(--brand) 55%, transparent), transparent 60%),
+    radial-gradient(34rem 24rem at -10% 20%, color-mix(in srgb, var(--accent) 50%, transparent), transparent 60%),
+    radial-gradient(30rem 20rem at 50% 110%, color-mix(in srgb, var(--success) 38%, transparent), transparent 60%),
+    linear-gradient(var(--canvas), var(--canvas));
 }
 .mesh-dark {
   background:
-    radial-gradient(36rem 20rem at 50% -10%, rgb(251 191 36 / 0.22), transparent 60%),
-    radial-gradient(30rem 22rem at 90% 110%, rgb(124 58 237 / 0.35), transparent 60%),
-    linear-gradient(#14111f, #0d0b16);
+    radial-gradient(36rem 20rem at 50% -10%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 60%),
+    radial-gradient(30rem 22rem at 90% 110%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 60%),
+    linear-gradient(var(--ink-strong), var(--ink-strong-2));
 }
 .text-gradient {
-  background: linear-gradient(92deg, #7c3aed 0%, #db2777 48%, #d97706 100%);
+  background: linear-gradient(92deg, var(--accent) 0%, #db2777 48%, var(--brand-strong) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .glass {
-  background: rgb(255 255 255 / 0.72);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
   backdrop-filter: blur(18px) saturate(1.4);
   -webkit-backdrop-filter: blur(18px) saturate(1.4);
 }
@@ -82,7 +160,7 @@ body {
 }
 .btn-shine:hover::after { transform: translateX(120%); }
 .card-lift { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease; }
-.card-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 44px -14px rgb(22 19 31 / 0.25); }
+.card-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 44px -14px color-mix(in srgb, var(--ink) 22%, transparent); }
 
 @keyframes float-slow {
   0%, 100% { transform: translateY(0) rotate(var(--fl-rot, 0deg)); }
@@ -149,30 +227,30 @@ body {
 
 input[type="range"] {
   -webkit-appearance: none; appearance: none; height: 8px; border-radius: 999px;
-  background: linear-gradient(to right, #fbbf24 var(--fill, 20%), rgb(255 255 255 / 0.18) var(--fill, 20%));
+  background: linear-gradient(to right, var(--brand) var(--fill, 20%), color-mix(in srgb, var(--surface) 18%, transparent) var(--fill, 20%));
   outline: none; cursor: pointer;
 }
 input[type="range"].light-track {
-  background: linear-gradient(to right, #16131f var(--fill, 20%), #e7e2d8 var(--fill, 20%));
+  background: linear-gradient(to right, var(--ink) var(--fill, 20%), var(--line) var(--fill, 20%));
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; height: 22px; width: 22px; border-radius: 999px;
-  background: #fff; border: 5px solid #fbbf24; box-shadow: 0 4px 12px rgb(0 0 0 / 0.35); cursor: grab;
+  background: var(--surface); border: 5px solid var(--brand); box-shadow: 0 4px 12px rgb(0 0 0 / 0.35); cursor: grab;
 }
 input[type="range"]::-moz-range-thumb {
   height: 20px; width: 20px; border-radius: 999px;
-  background: #fff; border: 5px solid #fbbf24; cursor: grab;
+  background: var(--surface); border: 5px solid var(--brand); cursor: grab;
 }
 
 ::selection {
-  background: #fbbf24;
-  color: #16131f;
+  background: var(--brand);
+  color: var(--ink);
 }
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #faf8f4; }
-::-webkit-scrollbar-thumb { background: #d6cfc2; border-radius: 999px; border: 2px solid #faf8f4; }
-::-webkit-scrollbar-thumb:hover { background: #16131f; }
-:focus-visible { outline: 3px solid #7c3aed; outline-offset: 2px; border-radius: 8px; }
+::-webkit-scrollbar-track { background: var(--canvas); }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 999px; border: 2px solid var(--canvas); }
+::-webkit-scrollbar-thumb:hover { background: var(--ink); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   html { scroll-behavior: auto; }

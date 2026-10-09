@@ -6,7 +6,7 @@ import { Eyebrow } from "../components/ui";
 export default function ChdAreas() {
   return (
     <section id="areas" className="mx-auto grid max-w-6xl gap-5 px-4 pt-16 md:grid-cols-2">
-      <div className="card-lift rounded-[26px] border border-[#16131f]/8 bg-white p-7">
+      <div className="card-lift rounded-[26px] border border-ink/8 bg-white p-7">
         <Eyebrow>Delivery in the Tricity</Eyebrow>
         <h2 className="mt-2.5 text-2xl font-extrabold tracking-tight">From order to doorstep</h2>
         <div className="mt-6">
@@ -30,10 +30,10 @@ export default function ChdAreas() {
           <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/40 blur-2xl" aria-hidden />
           <div className="relative">
             <h2 className="text-2xl font-extrabold tracking-tight">Areas we serve</h2>
-            <p className="mt-1 text-sm font-semibold text-[#16131f]/70">Hand delivery • hostel • college gate • home</p>
+            <p className="mt-1 text-sm font-semibold text-ink/70">Hand delivery • hostel • college gate • home</p>
             <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
               {AREAS_SERVED.map((a) => (
-                <div key={a.sector} className="rounded-2xl border border-[#16131f]/10 bg-white/85 px-3.5 py-2.5 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white">
+                <div key={a.sector} className="rounded-2xl border border-ink/10 bg-white/85 px-3.5 py-2.5 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white">
                   <p className="text-sm font-extrabold tracking-tight">{a.sector}</p>
                   <p className="text-[12px] font-medium text-zinc-600">{a.note}</p>
                 </div>
@@ -41,12 +41,12 @@ export default function ChdAreas() {
             </div>
           </div>
         </div>
-        <div className="mt-4 rounded-[26px] border border-[#16131f]/8 bg-white p-6">
+        <div className="mt-4 rounded-[26px] border border-ink/8 bg-white p-6">
           <h3 className="font-extrabold tracking-tight">Why Tricity trusts us</h3>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             {WHY_US.map(([, t, d]: string[]) => (
               <div key={t} className="flex gap-2.5">
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#16131f]/5 text-[13px] font-bold text-[#16131f]">{t.charAt(0)}</span>
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-ink/5 text-[13px] font-bold text-ink">{t.charAt(0)}</span>
                 <div><p className="text-sm font-bold">{t}</p><p className="mt-0.5 text-[13px] leading-relaxed text-zinc-600">{d}</p></div>
               </div>
             ))}

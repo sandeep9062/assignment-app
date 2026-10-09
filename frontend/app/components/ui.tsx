@@ -2,15 +2,15 @@
 export function LogoMark({ sub }: { sub?: string }) {
   return (
     <span className="flex items-center gap-2.5">
-      <span className="relative grid h-10 w-10 place-items-center rounded-2xl bg-[#16131f] text-white shadow-[0_8px_20px_-8px_rgb(22_19_31/.5)]">
+      <span className="relative grid h-10 w-10 place-items-center rounded-2xl bg-ink text-white shadow-[0_8px_20px_-8px_rgb(22_19_31/.5)]">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
           <path d="M4 20l3.5-1L20 6.5a2.1 2.1 0 0 0-3-3L4.5 16 4 20z" stroke="#fbbf24" strokeWidth="2" strokeLinejoin="round" />
           <path d="M14.5 6.5l3 3" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
         </svg>
-        <span className="absolute -right-1 -top-1 grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-[10px] font-black text-white ring-2 ring-[#faf8f4]">✓</span>
+        <span className="absolute -right-1 -top-1 grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-[10px] font-black text-white ring-2 ring-canvas">✓</span>
       </span>
       <span className="leading-tight">
-        <span className="block text-[17px] font-extrabold tracking-tight text-[#16131f]">
+        <span className="block text-[17px] font-extrabold tracking-tight text-ink">
           StudySathi{sub ? <span className="text-gradient"> {sub}</span> : null}
         </span>
         <span className="hidden text-[11px] font-semibold tracking-wide text-zinc-500 sm:block">Assignments • Notes • All India</span>

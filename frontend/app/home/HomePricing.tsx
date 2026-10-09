@@ -33,9 +33,9 @@ export default function HomePricing() {
             <p className="mt-1.5 text-sm text-zinc-300">No hidden charges. Pay only 30% to start.</p>
             <div className="mt-5 grid grid-cols-2 gap-2">
               {TYPES.map((t) => (
-                <button key={t.k} onClick={() => setType(t.k)} className={`rounded-2xl border px-3 py-3 text-left transition ${type === t.k ? "border-amber-300 bg-amber-300 text-[#16131f] shadow-lg" : "border-white/15 bg-white/[0.05] hover:border-white/40"}`}>
+                <button key={t.k} onClick={() => setType(t.k)} className={`rounded-2xl border px-3 py-3 text-left transition ${type === t.k ? "border-amber-300 bg-amber-300 text-ink shadow-lg" : "border-white/15 bg-white/[0.05] hover:border-white/40"}`}>
                   <span className="block text-sm font-extrabold">{t.label}</span>
-                  <span className={`block text-[12px] font-semibold ${type === t.k ? "text-[#16131f]/70" : "text-zinc-400"}`}>{t.sub}</span>
+                  <span className={`block text-[12px] font-semibold ${type === t.k ? "text-ink/70" : "text-zinc-400"}`}>{t.sub}</span>
                 </button>
               ))}
             </div>
@@ -51,12 +51,12 @@ export default function HomePricing() {
             </div>
           </div>
         </div>
-        <div className="card-lift rounded-[26px] border border-[#16131f]/8 bg-white p-7 sm:p-8">
+        <div className="card-lift rounded-[26px] border border-ink/8 bg-white p-7 sm:p-8">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100/80 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.16em] text-amber-800 ring-1 ring-amber-200">Rate card</span>
           <h3 className="mt-2.5 text-2xl font-extrabold tracking-tight">Simple, honest pricing</h3>
           <div className="mt-5 space-y-2.5 text-[15px]">
             {[["Handwritten assignment", "₹79 / page"], ["Typed assignment", "₹49 / page"], ["Handwritten notes (PDF)", "₹299–799 / subject"], ["Practical file / project", "₹999+ / file"], ["Exam crash kit", "₹199+ / kit"], ["Spiral + courier", "₹149 + shipping"]].map(([a, b]) => (
-              <div key={a} className="flex items-center justify-between gap-3 rounded-2xl border border-[#16131f]/8 bg-[#faf8f4]/60 px-4 py-3 transition hover:border-[#16131f]/25 hover:bg-white"><span className="font-semibold">{a}</span><strong className="whitespace-nowrap">{b}</strong></div>
+              <div key={a} className="flex items-center justify-between gap-3 rounded-2xl border border-ink/8 bg-canvas/60 px-4 py-3 transition hover:border-ink/25 hover:bg-white"><span className="font-semibold">{a}</span><strong className="whitespace-nowrap">{b}</strong></div>
             ))}
           </div>
           <p className="mt-4 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-900 ring-1 ring-emerald-100">Express &lt;24 hr delivery: +25%. Full refund if we miss your deadline.</p>

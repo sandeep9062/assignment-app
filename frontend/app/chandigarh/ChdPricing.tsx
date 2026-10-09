@@ -32,9 +32,9 @@ export default function ChdPricing() {
           <p className="mt-1.5 text-sm text-zinc-300">No hidden charges. Pay only 30% to start.</p>
           <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-4">
             {TYPES.map((t) => (
-              <button key={t.k} onClick={() => setType(t.k)} className={`rounded-2xl border px-3 py-3 text-left transition ${type === t.k ? "border-amber-300 bg-amber-300 text-[#16131f] shadow-lg" : "border-white/15 bg-white/[0.05] hover:border-white/40"}`}>
+              <button key={t.k} onClick={() => setType(t.k)} className={`rounded-2xl border px-3 py-3 text-left transition ${type === t.k ? "border-amber-300 bg-amber-300 text-ink shadow-lg" : "border-white/15 bg-white/[0.05] hover:border-white/40"}`}>
                 <span className="block text-sm font-extrabold">{t.label}</span>
-                <span className={`block text-[12px] font-semibold ${type === t.k ? "text-[#16131f]/70" : "text-zinc-400"}`}>{t.sub}</span>
+                <span className={`block text-[12px] font-semibold ${type === t.k ? "text-ink/70" : "text-zinc-400"}`}>{t.sub}</span>
               </button>
             ))}
           </div>

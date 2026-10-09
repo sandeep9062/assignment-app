@@ -2,7 +2,7 @@ import { waLink } from "../components/site";
 
 export default function HomeTop() {
   return (
-    <div className="bg-[#14111f] text-white text-[13px]">
+    <div className="bg-ink-strong text-white text-[13px]">
       <div className="mx-auto max-w-6xl px-4 py-2 flex items-center justify-between gap-3">
         <p className="flex min-w-0 items-center gap-2.5">
           <span className="relative flex h-2 w-2 shrink-0">

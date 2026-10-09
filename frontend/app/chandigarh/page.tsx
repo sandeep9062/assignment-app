@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function ChandigarhRoute() {
   return (
-    <div className="min-h-screen bg-[#faf8f4] text-[#16131f]">
+    <div className="min-h-screen bg-canvas text-ink">
       <TopBar />
       <ChdHeader />
       <main>

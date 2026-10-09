@@ -32,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#faf8f4] text-[#16131f]">
+      <body className="min-h-full flex flex-col bg-canvas text-ink">
         {/* Enable scroll-reveal gating before paint to avoid any flash of unstyled content */}
         <script
           dangerouslySetInnerHTML={{

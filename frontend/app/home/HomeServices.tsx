@@ -17,7 +17,7 @@ export default function HomeServices() {
       </h2>
       <div className="mt-7 grid gap-5 md:grid-cols-2">
         {SERVICES.map((s) => (
-          <div key={s.title} className="card-lift group relative overflow-hidden rounded-[26px] border border-[#16131f]/8 bg-white">
+          <div key={s.title} className="card-lift group relative overflow-hidden rounded-[26px] border border-ink/8 bg-white">
             <div className={`h-1.5 bg-gradient-to-r ${s.grad}`} aria-hidden />
             <div className="p-6 sm:p-7">
               <div className="flex items-center justify-between gap-3">
@@ -26,7 +26,7 @@ export default function HomeServices() {
                     <path d={ICONS[s.icon]} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
-                <span className="rounded-full bg-[#16131f] px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-white">{s.badge}</span>
+                <span className="rounded-full bg-ink px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-white">{s.badge}</span>
               </div>
               <h3 className="mt-4 text-xl font-extrabold tracking-tight">{s.title}</h3>
               <p className="mt-1.5 text-[15px] leading-relaxed text-zinc-600">{s.desc}</p>
@@ -37,7 +37,7 @@ export default function HomeServices() {
               </ul>
               <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-dashed border-zinc-200 pt-5">
                 <p className="text-lg font-extrabold tracking-tight">{s.price}</p>
-                <a href={waLink(s.msg)} className="btn-shine inline-flex items-center gap-1.5 rounded-full bg-[#16131f] px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5">{s.cta} <Arrow /></a>
+                <a href={waLink(s.msg)} className="btn-shine inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5">{s.cta} <Arrow /></a>
               </div>
             </div>
           </div>

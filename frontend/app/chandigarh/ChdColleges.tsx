@@ -24,7 +24,7 @@ export default function ChdColleges() {
           <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-zinc-600">Cover pages, margins & word-limits matched to each college. Search yours.</p>
         </div>
         <div className="relative w-full md:w-72">
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search college, sector, course…" className="w-full rounded-2xl border border-[#16131f]/12 bg-white px-5 py-3 text-sm font-medium shadow-sm outline-none transition placeholder:text-zinc-400 focus:border-[#16131f] focus:ring-4 focus:ring-violet-100" />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search college, sector, course…" className="w-full rounded-2xl border border-ink/12 bg-white px-5 py-3 text-sm font-medium shadow-sm outline-none transition placeholder:text-zinc-400 focus:border-ink focus:ring-4 focus:ring-violet-100" />
           <span className="absolute right-4 top-3.5 text-zinc-400">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
               <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
@@ -35,12 +35,12 @@ export default function ChdColleges() {
       </div>
       <div className="mt-5 flex flex-wrap gap-2">
         {COLLEGE_FILTERS.map((x) => (
-          <button key={x} onClick={() => setF(x)} className={`rounded-full px-4 py-2 text-[13px] font-bold transition ${f === x ? "bg-[#16131f] text-white shadow-md" : "border border-[#16131f]/10 bg-white text-zinc-600 hover:-translate-y-0.5 hover:border-[#16131f]/40"}`}>{x}</button>
+          <button key={x} onClick={() => setF(x)} className={`rounded-full px-4 py-2 text-[13px] font-bold transition ${f === x ? "bg-ink text-white shadow-md" : "border border-ink/10 bg-white text-zinc-600 hover:-translate-y-0.5 hover:border-ink/40"}`}>{x}</button>
         ))}
       </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {list.map((c) => (
-          <div key={c.name} className="card-lift group flex flex-col rounded-[22px] border border-[#16131f]/8 bg-white p-5">
+          <div key={c.name} className="card-lift group flex flex-col rounded-[22px] border border-ink/8 bg-white p-5">
             <div className="flex items-start justify-between gap-2">
               <span className={`grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br text-sm font-extrabold text-white shadow-md ${c.grad}`}>
                 {c.name.charAt(0)}
@@ -50,12 +50,12 @@ export default function ChdColleges() {
             <h3 className="mt-3 font-extrabold leading-snug tracking-tight">{c.name}</h3>
             <p className="mt-1 text-[12px] font-bold text-amber-700">{c.area} • {c.type}</p>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-zinc-600">{c.courses}</p>
-            <a href={waLink(`Hi StudySathi Chandigarh! I'm from ${c.name} (${c.area}). Need: Subject ___, Pages ___, Deadline ___`)} className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-[#16131f]/12 px-4 py-2.5 text-sm font-bold transition group-hover:border-[#16131f] group-hover:bg-[#16131f] group-hover:text-white">Order for {c.name.split(" ")[0]} <Arrow /></a>
+            <a href={waLink(`Hi StudySathi Chandigarh! I'm from ${c.name} (${c.area}). Need: Subject ___, Pages ___, Deadline ___`)} className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-ink/12 px-4 py-2.5 text-sm font-bold transition group-hover:border-ink group-hover:bg-ink group-hover:text-white">Order for {c.name.split(" ")[0]} <Arrow /></a>
           </div>
         ))}
       </div>
       {list.length === 0 && (
-        <div className="mt-6 rounded-[22px] border border-dashed border-[#16131f]/20 bg-white p-8 text-center">
+        <div className="mt-6 rounded-[22px] border border-dashed border-ink/20 bg-white p-8 text-center">
           <p className="text-lg font-extrabold tracking-tight">College not listed? We still cover it</p>
           <p className="mt-1 text-sm text-zinc-600">Tell us your college on WhatsApp — we will match its format.</p>
           <a href={waLink(`Hi! My college is ${q}. Can you write my assignment?`)} className="btn-shine mt-4 inline-flex rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-2.5 font-bold text-white">Ask on WhatsApp</a>

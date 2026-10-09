@@ -20,7 +20,7 @@ function WhyGlyph({ k, dark = false }: { k: string; dark?: boolean }) {
     wallet: "M3 6h18v13H3z M3 9h18 M16 15h.01",
   };
   return (
-    <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${dark ? "bg-white/10 text-amber-300" : "bg-[#16131f]/5 text-[#16131f]"}`}>
+    <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${dark ? "bg-white/10 text-amber-300" : "bg-ink/5 text-ink"}`}>
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
         <path d={paths[k] ?? paths.pen} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
@@ -32,7 +32,7 @@ export default function HomeProof() {
   return (
     <section id="reviews" className="mx-auto max-w-6xl px-4 pt-16">
       <div className="grid gap-5 md:grid-cols-2">
-        <div className="card-lift rounded-[26px] border border-[#16131f]/8 bg-white p-7">
+        <div className="card-lift rounded-[26px] border border-ink/8 bg-white p-7">
           <Eyebrow>How it works</Eyebrow>
           <h2 className="mt-2 text-2xl font-extrabold tracking-tight">From panic to submitted in 4 steps</h2>
           <div className="mt-6">
@@ -75,11 +75,11 @@ export default function HomeProof() {
             Students <span className="font-hand text-gradient text-[1.12em]">love us</span>
           </h2>
         </div>
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#16131f]/10 bg-white px-4 py-2.5 text-sm font-bold shadow-sm"><Stars /> 4.9 • 9,500+ reviews</div>
+        <div className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-4 py-2.5 text-sm font-bold shadow-sm"><Stars /> 4.9 • 9,500+ reviews</div>
       </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {REVIEWS.map((r, i) => (
-          <figure key={r.name} className="card-lift relative overflow-hidden rounded-[22px] border border-[#16131f]/8 bg-white p-5">
+          <figure key={r.name} className="card-lift relative overflow-hidden rounded-[22px] border border-ink/8 bg-white p-5">
             <span className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${AVATAR_BG[i % AVATAR_BG.length]}`} aria-hidden />
             <Stars />
             <blockquote className="mt-2.5 text-[15px] leading-relaxed text-zinc-700">“{r.text}”</blockquote>

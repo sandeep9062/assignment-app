@@ -14,16 +14,16 @@ export default function ChdCta() {
           <p className="mx-auto mt-3 max-w-xl leading-relaxed text-zinc-300">Message your college + subject now. Free sample + exact quote in 5 minutes. PDF tonight, spiral at your gate tomorrow.</p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <a href={waLink("Hi StudySathi Chandigarh! I want to order. College: ___, Subject: ___, Pages: ___, Deadline: ___")} className="btn-shine inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-8 py-4 font-bold transition hover:-translate-y-0.5"><WaGlyph size={20} /> WhatsApp to order</a>
-            <a href="tel:+919876543210" className="inline-flex items-center justify-center gap-1.5 rounded-2xl border border-white/20 bg-white/[0.06] px-8 py-4 font-bold backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-[#16131f]">Call Tricity helpline <Arrow /></a>
+            <a href="tel:+919876543210" className="inline-flex items-center justify-center gap-1.5 rounded-2xl border border-white/20 bg-white/[0.06] px-8 py-4 font-bold backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-ink">Call Tricity helpline <Arrow /></a>
           </div>
           <div className="mx-auto mt-6 flex max-w-xl flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-[12px] font-semibold text-zinc-400">
             <span>Pickup: Sector 17E & 34A</span><span className="h-1 w-1 rounded-full bg-zinc-600" /><span>9am–9pm</span><span className="h-1 w-1 rounded-full bg-zinc-600" /><span>Cash / UPI on delivery</span>
           </div>
         </div>
       </div>
-      <footer className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-[#16131f]/8 pb-6 pt-6 text-[13px] text-zinc-500 md:flex-row">
+      <footer className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-ink/8 pb-6 pt-6 text-[13px] text-zinc-500 md:flex-row">
         <p className="flex items-center gap-2"><LogoMark sub="Chandigarh" /> <span className="hidden sm:inline">• PU • DAV • PEC • CU • IGNOU Sec-9</span></p>
-        <p className="flex gap-5 font-semibold"><Link href="/" className="transition hover:text-[#16131f]">All-India site</Link><a href="#colleges" className="transition hover:text-[#16131f]">Colleges</a><a href="#pricing" className="transition hover:text-[#16131f]">Pricing</a></p>
+        <p className="flex gap-5 font-semibold"><Link href="/" className="transition hover:text-ink">All-India site</Link><a href="#colleges" className="transition hover:text-ink">Colleges</a><a href="#pricing" className="transition hover:text-ink">Pricing</a></p>
       </footer>
       <a href={waLink("Hi StudySathi Chandigarh! I need help with: ___")} aria-label="Chat on WhatsApp" className="btn-shine fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg transition hover:scale-105">
         <WaGlyph size={26} />

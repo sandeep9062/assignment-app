@@ -12,7 +12,7 @@ export default function ChdSteps() {
     <section id="order" className="mx-auto max-w-6xl px-4 pt-12">
       <div className="grid gap-4 md:grid-cols-3">
         {ITEMS.map((s, i) => (
-          <div key={s.t} className="card-lift rounded-3xl border border-[#16131f]/8 bg-white p-5">
+          <div key={s.t} className="card-lift rounded-3xl border border-ink/8 bg-white p-5">
             <div className="flex gap-4">
               <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br text-sm font-extrabold text-white shadow-md ${s.grad}`}>0{i + 1}</span>
               <div>
@@ -28,7 +28,7 @@ export default function ChdSteps() {
         <div className="dotted-bg-light absolute inset-0 opacity-20" aria-hidden />
         <div className="relative flex flex-wrap items-center justify-between gap-3">
           <p className="text-[15px]"><strong>Urgent?</strong> Submission tomorrow? Ask for <span className="font-bold text-amber-300">Express 24-hr</span> writing.</p>
-          <a href={waLink("URGENT Chandigarh: need assignment in 24 hrs. College ___, Subject ___, Pages ___")} className="btn-shine inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-400 px-4 py-2 text-[13px] font-extrabold text-[#16131f] transition hover:-translate-y-0.5">Express order <Arrow /></a>
+          <a href={waLink("URGENT Chandigarh: need assignment in 24 hrs. College ___, Subject ___, Pages ___")} className="btn-shine inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-400 px-4 py-2 text-[13px] font-extrabold text-ink transition hover:-translate-y-0.5">Express order <Arrow /></a>
         </div>
       </div>
     </section>

@@ -19,11 +19,11 @@ export default function ChdReviews() {
             Chandigarh students <span className="font-hand text-gradient text-[1.12em]">love us</span>
           </h2>
         </div>
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#16131f]/10 bg-white px-4 py-2.5 text-sm font-bold shadow-sm"><Stars /> 4.9 • 2,800+ reviews</div>
+        <div className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white px-4 py-2.5 text-sm font-bold shadow-sm"><Stars /> 4.9 • 2,800+ reviews</div>
       </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {CHD_REVIEWS.map((r, idx) => (
-          <figure key={r.name} className="card-lift relative overflow-hidden rounded-[22px] border border-[#16131f]/8 bg-white p-5">
+          <figure key={r.name} className="card-lift relative overflow-hidden rounded-[22px] border border-ink/8 bg-white p-5">
             <span className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${AVATAR_BG[idx % AVATAR_BG.length]}`} aria-hidden />
             <Stars />
             <blockquote className="mt-2.5 text-[15px] leading-relaxed text-zinc-700">“{r.text}”</blockquote>
