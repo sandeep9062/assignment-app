@@ -13,7 +13,7 @@ export function LogoMark({ sub }: { sub?: string }) {
         <span className="block text-[17px] font-extrabold tracking-tight text-[#16131f]">
           StudySathi{sub ? <span className="text-gradient"> {sub}</span> : null}
         </span>
-        <span className="block text-[11px] font-semibold tracking-wide text-zinc-500">Assignments • Notes • All India</span>
+        <span className="hidden text-[11px] font-semibold tracking-wide text-zinc-500 sm:block">Assignments • Notes • All India</span>
       </span>
     </span>
   );

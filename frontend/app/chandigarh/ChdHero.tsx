@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MARQUEE, waLink } from "../components/site";
 import { LOCAL_STATS } from "../components/chandigarh";
 import { Stars } from "../components/ui";
@@ -15,7 +16,7 @@ export default function ChdHero() {
             <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-white/80 px-3.5 py-1.5 text-[12px] font-bold text-emerald-800 backdrop-blur"><Stars /> 4.9 — 2,800+ Tricity reviews</span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#16131f]/10 bg-white/80 px-3.5 py-1.5 text-[12px] font-bold backdrop-blur">Same-day delivery</span>
           </div>
-          <p className="mt-4 text-sm font-medium text-zinc-500"><a href="/" className="transition hover:text-[#16131f] hover:underline">Home</a><span className="mx-1.5 text-zinc-300">/</span><span className="font-bold text-[#16131f]">Chandigarh</span></p>
+          <p className="mt-4 text-sm font-medium text-zinc-500"><Link href="/" className="transition hover:text-[#16131f] hover:underline">Home</Link><span className="mx-1.5 text-zinc-300">/</span><span className="font-bold text-[#16131f]">Chandigarh</span></p>
           <h1 className="mt-2 text-[2.6rem] font-extrabold leading-[1.02] tracking-tight sm:text-5xl lg:text-[3.4rem]">
             Assignments & <span className="relative inline-block"><span className="font-hand text-gradient text-[1.12em]">handwritten notes</span>
               <svg className="absolute -bottom-1.5 left-0 w-full" height="10" viewBox="0 0 220 10" preserveAspectRatio="none" aria-hidden>

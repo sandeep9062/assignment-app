@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Caveat } from "next/font/google";
+import ScrollReveal from "./components/ScrollReveal";
+import BackToTop from "./components/BackToTop";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,7 +33,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#faf8f4] text-[#16131f]">
+        {/* Enable scroll-reveal gating before paint to avoid any flash of unstyled content */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js-reveal')`,
+          }}
+        />
         {children}
+        <BackToTop />
+        <ScrollReveal />
       </body>
     </html>
   );

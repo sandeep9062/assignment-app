@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { waLink } from "../components/site";
 import { WaGlyph, Arrow, LogoMark } from "../components/ui";
 
@@ -22,7 +23,7 @@ export default function ChdCta() {
       </div>
       <footer className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-[#16131f]/8 pb-6 pt-6 text-[13px] text-zinc-500 md:flex-row">
         <p className="flex items-center gap-2"><LogoMark sub="Chandigarh" /> <span className="hidden sm:inline">• PU • DAV • PEC • CU • IGNOU Sec-9</span></p>
-        <p className="flex gap-5 font-semibold"><a href="/" className="transition hover:text-[#16131f]">All-India site</a><a href="#colleges" className="transition hover:text-[#16131f]">Colleges</a><a href="#pricing" className="transition hover:text-[#16131f]">Pricing</a></p>
+        <p className="flex gap-5 font-semibold"><Link href="/" className="transition hover:text-[#16131f]">All-India site</Link><a href="#colleges" className="transition hover:text-[#16131f]">Colleges</a><a href="#pricing" className="transition hover:text-[#16131f]">Pricing</a></p>
       </footer>
       <a href={waLink("Hi StudySathi Chandigarh! I need help with: ___")} aria-label="Chat on WhatsApp" className="btn-shine fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg transition hover:scale-105">
         <WaGlyph size={26} />

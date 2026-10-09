@@ -124,6 +124,23 @@ body {
 .rise-3 { animation-delay: 0.22s; }
 .rise-4 { animation-delay: 0.3s; }
 
+/* Scroll-reveal — only active when JS is present (.js-reveal added in layout).
+   Sections fade+slide in as they enter the viewport. Hidden state gated so that
+   with JS disabled or before hydration, everything stays visible. */
+.js-reveal main section[data-revealed] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.js-reveal main section[data-revealed].reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal main section[data-revealed] { opacity: 1; transform: none; transition: none; }
+}
+
 @keyframes ticker-dot {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.6); opacity: 0.55; }
