@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   StudySathi — design tokens
+   Single source of truth for the colour system: warm paper canvas, deep ink
+   text, and amber / violet / emerald accents. Change a value here and it flows
+   through every utility that references it.
+   ============================================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --canvas: #faf8f4;        /* page background — warm paper */
+  --surface: #ffffff;       /* cards, panels */
+  --surface-2: #f4f0e8;     /* subtle fills, inputs, table rows */
+  --surface-3: #ece6da;     /* hover fills */
+  --ink-strong: #14111f;    /* fixed dark panels — top bar, marquee, CTA */
+  --ink-strong-2: #0d0b16;
+
+  /* Text */
+  --ink: #16131f;           /* primary text + solid dark elements */
+  --muted: #57534e;         /* secondary text */
+  --faint: #8a857c;         /* tertiary / placeholder */
+
+  /* Lines */
+  --line: #e7e2d8;          /* hairline borders */
+  --line-strong: #d6cfc2;   /* stronger borders, dividers */
+
+  /* Brand + semantic accents */
+  --brand: #f59e0b;         /* amber — primary accent */
+  --brand-strong: #d97706;
+  --brand-soft: #fef3c7;
+  --accent: #7c3aed;        /* violet — secondary accent */
+  --accent-strong: #6d28d9;
+  --accent-soft: #ede9fe;
+  --success: #059669;       /* emerald — trust / WhatsApp */
+  --success-strong: #047857;
+  --success-soft: #d1fae5;
+  --danger: #e11d48;        /* rose — urgency */
+
+  /* Legacy aliases (existing var(--background)/var(--foreground) still work) */
+  --background: var(--canvas);
+  --foreground: var(--ink);
+}
+
+/* Warm, cohesive neutral scale. Replaces the default cool "zinc" greys so that
+   every text-zinc-* / border-zinc-* usage harmonises with the warm paper
+   canvas instead of clashing with it. Values are Tailwind's "stone" ramp. */
+@theme {
+  --color-zinc-50: #fafaf9;
+  --color-zinc-100: #f5f5f4;
+  --color-zinc-200: #e7e5e4;
+  --color-zinc-300: #d6d3d1;
+  --color-zinc-400: #a8a29e;
+  --color-zinc-500: #78716c;
+  --color-zinc-600: #57534e;
+  --color-zinc-700: #44403c;
+  --color-zinc-800: #292524;
+  --color-zinc-900: #1c1917;
+  --color-zinc-950: #0c0a09;
+}
+
+/* Semantic tokens exposed as Tailwind utilities — bg-canvas, text-ink,
+   border-line, bg-brand, text-accent, … `inline` makes the utilities read the
+   CSS variables directly, so overrides cascade everywhere at once. */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink-strong: var(--ink-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-strong: var(--success-strong);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-background: var(--canvas);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-hand: var(--font-hand), cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.font-hand {
+  font-family: var(--font-hand), "Segoe Print", "Bradley Hand", cursive;
+  letter-spacing: -0.01em;
+}
+
+.lined-paper {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    var(--line) 27px,
+    var(--line) 28px
+  );
+  line-height: 28px;
+}
+
+.dotted-bg {
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 14%, transparent) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+.dotted-bg-light {
+  background-image: radial-gradient(rgb(255 255 255 / 0.16) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+.mesh-hero {
+  background:
+    radial-gradient(38rem 22rem at 85% -5%, color-mix(in srgb, var(--brand) 55%, transparent), transparent 60%),
+    radial-gradient(34rem 24rem at -10% 20%, color-mix(in srgb, var(--accent) 50%, transparent), transparent 60%),
+    radial-gradient(30rem 20rem at 50% 110%, color-mix(in srgb, var(--success) 38%, transparent), transparent 60%),
+    linear-gradient(var(--canvas), var(--canvas));
+}
+.mesh-dark {
+  background:
+    radial-gradient(36rem 20rem at 50% -10%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 60%),
+    radial-gradient(30rem 22rem at 90% 110%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 60%),
+    linear-gradient(var(--ink-strong), var(--ink-strong-2));
+}
+.text-gradient {
+  background: linear-gradient(92deg, var(--accent) 0%, #db2777 48%, var(--brand-strong) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.glass {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+.btn-shine { position: relative; overflow: hidden; isolation: isolate; }
+.btn-shine::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(105deg, transparent 40%, rgb(255 255 255 / 0.45) 50%, transparent 60%);
+  transform: translateX(-120%); transition: transform 0.7s ease; pointer-events: none;
+}
+.btn-shine:hover::after { transform: translateX(120%); }
+.card-lift { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease; }
+.card-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 44px -14px color-mix(in srgb, var(--ink) 22%, transparent); }
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(var(--fl-rot, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--fl-rot, 0deg)); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float-slow 7s ease-in-out 1.2s infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(24px, -28px) scale(1.08); }
+  66% { transform: translate(-20px, 18px) scale(0.94); }
+}
+.animate-blob { animation: blob 12s ease-in-out infinite; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.rise-1 { animation-delay: 0.06s; }
+.rise-2 { animation-delay: 0.14s; }
+.rise-3 { animation-delay: 0.22s; }
+.rise-4 { animation-delay: 0.3s; }
+
+/* Scroll-reveal — only active when JS is present (.js-reveal added in layout).
+   Sections fade+slide in as they enter the viewport. Hidden state gated so that
+   with JS disabled or before hydration, everything stays visible. */
+.js-reveal main section[data-revealed] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.js-reveal main section[data-revealed].reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal main section[data-revealed] { opacity: 1; transform: none; transition: none; }
+}
+
+@keyframes ticker-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.55; }
+}
+.live-dot { animation: ticker-dot 1.6s ease-in-out infinite; }
+
+input[type="range"] {
+  -webkit-appearance: none; appearance: none; height: 8px; border-radius: 999px;
+  background: linear-gradient(to right, var(--brand) var(--fill, 20%), color-mix(in srgb, var(--surface) 18%, transparent) var(--fill, 20%));
+  outline: none; cursor: pointer;
+}
+input[type="range"].light-track {
+  background: linear-gradient(to right, var(--ink) var(--fill, 20%), var(--line) var(--fill, 20%));
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; height: 22px; width: 22px; border-radius: 999px;
+  background: var(--surface); border: 5px solid var(--brand); box-shadow: 0 4px 12px rgb(0 0 0 / 0.35); cursor: grab;
+}
+input[type="range"]::-moz-range-thumb {
+  height: 20px; width: 20px; border-radius: 999px;
+  background: var(--surface); border: 5px solid var(--brand); cursor: grab;
+}
+
+::selection {
+  background: var(--brand);
+  color: var(--ink);
+}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--canvas); }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 999px; border: 2px solid var(--canvas); }
+::-webkit-scrollbar-thumb:hover { background: var(--ink); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}
