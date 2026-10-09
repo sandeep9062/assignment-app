@@ -2,16 +2,16 @@
 import { useState } from "react";
 import { CATEGORIES, COLLEGES } from "@/data/mock";
 import { api } from "@/lib/client";
+import { useToast } from "@/components/Toaster";
 
 export default function SellerApplyForm({ defaults }) {
+  const toast = useToast();
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
   const [status, setStatus] = useState("");
 
   async function submit(e) {
     e.preventDefault();
     setBusy(true);
-    setError("");
     const fd = new FormData(e.currentTarget);
     const body = Object.fromEntries(fd);
     body.categories = fd.getAll("categories");
@@ -19,7 +19,8 @@ export default function SellerApplyForm({ defaults }) {
     body.agree = fd.get("agree") === "on";
     const r = await api("/api/seller/apply", body);
     setBusy(false);
-    if (!r.ok) return setError(r.error);
+    if (!r.ok) return toast.error(r.error);
+    toast.success(r.data.status === "approved" ? "You are live! Your profile is visible now." : "Application received. We will message you on WhatsApp.");
     setStatus(r.data.status);
   }
 
@@ -73,7 +74,6 @@ export default function SellerApplyForm({ defaults }) {
         <input type="checkbox" name="agree" required style={{ width: "auto", marginRight: 8 }} />
         I will not misrepresent work or break my college's rules, and I agree to the seller terms.
       </label>
-      {error && <div className="err" role="alert">{error}</div>}
       <div style={{ marginTop: 20 }}><button className="btn" type="submit" disabled={busy}>{busy ? "Submitting" : "Submit application"}</button></div>
     </form>
   );

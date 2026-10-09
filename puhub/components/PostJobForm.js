@@ -3,10 +3,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { CATEGORIES, COLLEGES } from "@/data/mock";
 import { api } from "@/lib/client";
+import { useToast } from "@/components/Toaster";
 
 export default function PostJobForm({ defaultCollege = "" }) {
+  const toast = useToast();
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
   const [done, setDone] = useState(false);
   const [delivery, setDelivery] = useState("pickup");
   const today = new Date().toISOString().slice(0, 10);
@@ -14,11 +15,11 @@ export default function PostJobForm({ defaultCollege = "" }) {
   async function submit(e) {
     e.preventDefault();
     setBusy(true);
-    setError("");
     const f = Object.fromEntries(new FormData(e.currentTarget));
     const r = await api("/api/jobs", f);
     setBusy(false);
-    if (!r.ok) return setError(r.error);
+    if (!r.ok) return toast.error(r.error);
+    toast.success("Job posted. Sellers can see it now.");
     setDone(true);
   }
 
@@ -65,7 +66,6 @@ export default function PostJobForm({ defaultCollege = "" }) {
         <div><label htmlFor="address">Delivery address</label><input id="address" name="address" required minLength={5} maxLength={200} placeholder="House or hostel, sector, Chandigarh" />
           <p className="note" style={{ margin: "6px 0 0" }}>Only shared with the seller you choose.</p></div>
       )}
-      {error && <div className="err" role="alert">{error}</div>}
       <div style={{ marginTop: 20 }}><button className="btn" type="submit" disabled={busy}>{busy ? "Posting" : "Post job"}</button></div>
     </form>
   );
