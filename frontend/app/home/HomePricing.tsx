@@ -1,0 +1,54 @@
+"use client";
+import { useMemo, useState } from "react";
+import { waLink } from "../components/site";
+
+export default function HomePricing() {
+  const [type, setType] = useState<"hand" | "typed" | "notes" | "file">("hand");
+  const [pages, setPages] = useState(30);
+  const price = useMemo(() => {
+    if (type === "hand") return pages * 79;
+    if (type === "typed") return pages * 49;
+    if (type === "notes") return 499;
+    return 999;
+  }, [type, pages]);
+  const label = type === "hand" ? `${pages} handwritten pages` : type === "typed" ? `${pages} typed pages` : type === "notes" ? "1 subject notes PDF" : "1 practical file / project";
+  return (
+    <section id="pricing" className="mx-auto max-w-6xl px-4 pt-14">
+      <div className="grid md:grid-cols-[1fr_1fr] gap-6 items-stretch">
+        <div className="rounded-3xl bg-zinc-900 text-white p-7 md:p-9 relative overflow-hidden">
+          <div className="dotted-bg absolute inset-0 opacity-10" />
+          <div className="relative">
+            <p className="text-[12px] font-extrabold tracking-[0.2em] text-amber-300">INSTANT QUOTE</p>
+            <h2 className="mt-2 text-3xl font-extrabold">Price calculator</h2>
+            <p className="mt-2 text-zinc-300 text-sm">No hidden charges. Pay only 30% to start.</p>
+            <div className="mt-5 grid grid-cols-2 gap-2">
+              {[["hand", "✍️ Hand ₹79/p"], ["typed", "⌨️ Typed ₹49/p"], ["notes", "📓 Notes ₹499"], ["file", "🔬 File ₹999"]].map(([k, l]) => (
+                <button key={k} onClick={() => setType(k as typeof type)} className={`rounded-xl px-3 py-2.5 text-sm font-bold border-2 transition ${type === k ? "bg-amber-300 text-zinc-900 border-amber-300" : "border-white/20 hover:border-white/60"}`}>{l}</button>
+              ))}
+            </div>
+            {(type === "hand" || type === "typed") && (
+              <div className="mt-5">
+                <div className="flex justify-between text-sm font-bold"><span>Pages: {pages}</span><span>~{Math.ceil(pages / 12)} subjects</span></div>
+                <input type="range" min={5} max={150} value={pages} onChange={(e) => setPages(Number(e.target.value))} className="mt-2 w-full accent-amber-300" />
+              </div>
+            )}
+            <div className="mt-6 rounded-2xl bg-white/10 border border-white/15 p-4 flex flex-wrap items-center justify-between gap-4">
+              <div><p className="text-[12px] text-zinc-300 font-semibold">{label}</p><p className="text-3xl font-extrabold text-amber-300">₹{price.toLocaleString("en-IN")}</p></div>
+              <a href={waLink(`Hi StudySathi! Quote check: ${label} = Rs.${price}. My university: ___, Deadline: ___`)} className="rounded-full bg-emerald-500 px-5 py-3 font-bold text-sm hover:bg-emerald-400">Book at this price →</a>
+            </div>
+          </div>
+        </div>
+        <div className="rounded-3xl border-2 border-zinc-900 bg-white p-7 shadow-[6px_6px_0_#18181b]">
+          <p className="text-[12px] font-extrabold tracking-[0.2em] text-amber-600">RATE CARD</p>
+          <h3 className="mt-1 text-2xl font-extrabold">Simple, honest pricing</h3>
+          <div className="mt-4 space-y-3 text-[15px]">
+            {[["✍️ Handwritten assignment", "₹79 / page"], ["⌨️ Typed assignment", "₹49 / page"], ["📓 Handwritten notes (PDF)", "₹299–799 / subject"], ["🔬 Practical file / project", "₹999+ / file"], ["⚡ Exam crash kit", "₹199+ / kit"], ["📦 Spiral + courier", "₹149 + shipping"]].map(([a, b]) => (
+              <div key={a} className="flex items-center justify-between rounded-xl border border-zinc-200 px-4 py-2.5"><span className="font-semibold">{a}</span><strong>{b}</strong></div>
+            ))}
+          </div>
+          <p className="mt-4 text-sm text-zinc-600">Express &lt;24 hr delivery: +25%. Full refund if we miss your deadline.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
