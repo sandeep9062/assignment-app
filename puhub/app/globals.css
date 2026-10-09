@@ -1,3 +1,30 @@
+@layer theme, base, components, utilities;
+
+/* Tailwind v4, added alongside the existing design below.
+   We import theme + utilities but NOT Preflight: Preflight resets heading and
+   paragraph spacing and makes headings inherit body font-size/weight, which would
+   change this site's hand-built notebook look. Everything after this line is the
+   original design; because it is unlayered, it always wins over Tailwind's layered
+   utilities, so nothing here changes appearance. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Only scan puhub's own source (sibling apps in this repo have their own Tailwind). */
+@source "../app";
+@source "../components";
+@source "../lib";
+
+/* Minimal base so Tailwind border utilities (border, ring, divide) work without
+   full Preflight. Existing borders use the full `border:` shorthand in unlayered
+   CSS, so they are unaffected. */
+@layer base {
+  *, ::before, ::after, ::backdrop {
+    border-width: 0;
+    border-style: solid;
+    border-color: currentColor;
+  }
+}
+
 :root{
   --page:#EEF2FB;      /* desk */
   --paper:#FBFCFF;     /* notebook paper */
