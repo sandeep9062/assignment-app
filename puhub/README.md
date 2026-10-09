@@ -14,6 +14,18 @@ One Next.js app: pages, API routes and MongoDB (Mongoose) in the same project.
 4. `npm run seed` loads sample sellers and jobs (`npm run seed:reset` removes only those)
 5. `npm run dev` then open http://localhost:3000
 
+## JWT_SECRET: required in production (login/signup will 500 without it)
+
+`JWT_SECRET` signs the session cookie. `lib/auth.js` refuses a missing or short key when
+`NODE_ENV=production` and throws, so **log in and sign up both return HTTP 500**. In development
+it silently falls back to a throwaway key, so the problem only shows up after you deploy.
+
+- Use **at least 32 random characters**. Generate one:
+  `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"`
+- Set it in the environment of every host you deploy to (Vercel project env vars, your server's
+  `.env`, CI secrets, etc.) — not just your local `.env.local`.
+- Changing the secret invalidates existing sessions; users just need to log in again.
+
 ## What works
 - Sign up, log in, log out (bcrypt passwords, signed HttpOnly session cookie, 7 days)
 - Seller application, seller listing with search and filters, seller profiles
