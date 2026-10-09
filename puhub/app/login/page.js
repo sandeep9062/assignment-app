@@ -3,22 +3,23 @@ import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { COLLEGES } from "@/data/mock";
 import { api, safeNext } from "@/lib/client";
+import { useToast } from "@/components/Toaster";
 
 function Auth() {
   const router = useRouter();
+  const toast = useToast();
   const next = safeNext(useSearchParams().get("next"));
   const [mode, setMode] = useState("login");
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
 
   async function submit(e) {
     e.preventDefault();
     setBusy(true);
-    setError("");
     const f = Object.fromEntries(new FormData(e.currentTarget));
     const r = await api(mode === "login" ? "/api/auth/login" : "/api/auth/signup", f);
     setBusy(false);
-    if (!r.ok) return setError(r.error);
+    if (!r.ok) return toast.error(r.error);
+    toast.success(mode === "login" ? `Welcome back, ${r.data.user.name.split(" ")[0]}!` : "Account created. Welcome!");
     router.push(next);
     router.refresh();
   }
@@ -27,8 +28,8 @@ function Auth() {
     <div className="wrap" style={{ padding: "30px 16px" }}>
       <form className="form" style={{ maxWidth: 440 }} onSubmit={submit}>
         <div className="filters">
-          <button type="button" className={`chip ${mode === "login" ? "on" : ""}`} onClick={() => { setMode("login"); setError(""); }}>Log in</button>
-          <button type="button" className={`chip ${mode === "signup" ? "on" : ""}`} onClick={() => { setMode("signup"); setError(""); }}>Sign up</button>
+          <button type="button" className={`chip ${mode === "login" ? "on" : ""}`} onClick={() => setMode("login")}>Log in</button>
+          <button type="button" className={`chip ${mode === "signup" ? "on" : ""}`} onClick={() => setMode("signup")}>Sign up</button>
         </div>
         {mode === "signup" && (
           <>
@@ -43,7 +44,6 @@ function Auth() {
         <label htmlFor="password">Password</label>
         <input id="password" name="password" type="password" required minLength={mode === "signup" ? 8 : 1} maxLength={72} autoComplete={mode === "login" ? "current-password" : "new-password"} />
         {mode === "signup" && <p className="note" style={{ margin: "6px 0 0" }}>At least 8 characters.</p>}
-        {error && <div className="err" role="alert">{error}</div>}
         <div style={{ marginTop: 20 }}>
           <button className="btn" type="submit" style={{ width: "100%" }} disabled={busy}>
             {busy ? "Please wait" : mode === "login" ? "Log in" : "Create account"}

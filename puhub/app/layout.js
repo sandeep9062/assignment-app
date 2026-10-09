@@ -10,6 +10,7 @@ import "@fontsource/shadows-into-light/400.css";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ToastProvider } from "@/components/Toaster";
 import { BRAND } from "@/data/mock";
 
 const SITE = `https://${BRAND.domain}`;
@@ -118,9 +119,11 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <ToastProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </ToastProvider>
       </body>
     </html>
   );
