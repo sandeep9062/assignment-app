@@ -6,8 +6,9 @@ export function generateStaticParams() {
   return SELLERS.map((s) => ({ id: String(s.id) }));
 }
 
-export default function SellerPage({ params }) {
-  const s = SELLERS.find((x) => String(x.id) === params.id);
+export default async function SellerPage({ params }) {
+  const { id } = await params;
+  const s = SELLERS.find((x) => String(x.id) === id);
   if (!s) notFound();
   const cat = CATEGORIES.find((c) => c.slug === s.category);
   const initials = s.name.split(" ").map((x) => x[0]).slice(0, 2).join("");
