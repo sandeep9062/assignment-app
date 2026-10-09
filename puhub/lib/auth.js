@@ -29,7 +29,7 @@ export async function setSession(user) {
     .setIssuedAt()
     .setExpirationTime(`${MAX_AGE}s`)
     .sign(secret());
-  cookies().set(COOKIE, token, {
+  (await cookies()).set(COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
@@ -38,13 +38,13 @@ export async function setSession(user) {
   });
 }
 
-export function clearSession() {
-  cookies().set(COOKIE, "", { httpOnly: true, path: "/", maxAge: 0 });
+export async function clearSession() {
+  (await cookies()).set(COOKIE, "", { httpOnly: true, path: "/", maxAge: 0 });
 }
 
 // Cheap read from the cookie only (no database). Fine for showing a name in the navbar.
 export async function getSessionLight() {
-  const token = cookies().get(COOKIE)?.value;
+  const token = (await cookies()).get(COOKIE)?.value;
   if (!token) return null;
   try {
     const { payload } = await jwtVerify(token, secret(), { algorithms: ["HS256"] });

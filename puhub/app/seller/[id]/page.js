@@ -5,12 +5,14 @@ import { getSeller, labelOf } from "@/lib/queries";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }) {
-  const s = await getSeller(params.id);
+  const { id } = await params;
+  const s = await getSeller(id);
   return { title: s ? `${s.name} | Likhai` : "Seller not found | Likhai" };
 }
 
 export default async function SellerPage({ params }) {
-  const s = await getSeller(params.id);
+  const { id } = await params;
+  const s = await getSeller(id);
   if (!s) notFound();
   const initials = s.name.split(" ").map((x) => x[0]).slice(0, 2).join("");
   const pages = [s.sample, s.tags.slice(0, 2).join(". "), `Usually delivers in ${s.turnaround}.`].filter(Boolean);

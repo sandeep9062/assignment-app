@@ -7,7 +7,8 @@ import OfferForm from "@/components/OfferForm";
 export const dynamic = "force-dynamic";
 
 export default async function JobPage({ params }) {
-  const [job, user] = await Promise.all([getJob(params.id), getUser()]);
+  const { id } = await params;
+  const [job, user] = await Promise.all([getJob(id), getUser()]);
   if (!job) notFound();
   const mode = { pickup: "Pickup", delivery: "Doorstep delivery", digital: "Digital copy" }[job.deliveryMode];
 
