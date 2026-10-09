@@ -1,13 +1,34 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BRAND } from "@/data/mock";
 import { getSeller, labelOf } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
+const SITE = `https://${BRAND.domain}`;
+
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const s = await getSeller(id);
-  return { title: s ? `${s.name} | Likhai` : "Seller not found | Likhai" };
+  if (!s) return { title: "Seller not found", robots: { index: false, follow: false } };
+  const cat = s.category ? labelOf(s.category) : "";
+  const title = `${s.name}${cat ? ` — ${cat}` : ""} in ${BRAND.city}`;
+  const bits = [s.course, s.college, cat, s.turnaround ? `delivers in ${s.turnaround}` : ""].filter(Boolean);
+  const description = `${s.name} on ${BRAND.name}. ${bits.join(" · ")}. ${
+    s.from != null ? `Services from ₹${s.from}/${s.unit}.` : "View services and handwriting sample."
+  }`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/seller/${id}` },
+    openGraph: {
+      title: `${s.name} | ${BRAND.name}`,
+      description,
+      url: `${SITE}/seller/${id}`,
+      type: "profile",
+    },
+    twitter: { card: "summary_large_image", title: `${s.name} | ${BRAND.name}`, description },
+  };
 }
 
 export default async function SellerPage({ params }) {
@@ -17,8 +38,40 @@ export default async function SellerPage({ params }) {
   const initials = s.name.split(" ").map((x) => x[0]).slice(0, 2).join("");
   const pages = [s.sample, s.tags.slice(0, 2).join(". "), `Usually delivers in ${s.turnaround}.`].filter(Boolean);
 
+  // Person + Service markup for this seller, with rating when available.
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: s.name,
+    url: `${SITE}/seller/${id}`,
+    jobTitle: s.course || undefined,
+    worksFor: s.college ? { "@type": "Organization", name: s.college } : undefined,
+    ...(s.rating
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: s.rating,
+            reviewCount: Math.max(s.jobs || 0, 1),
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
+    makesOffer: s.services?.slice(0, 10).map((v) => ({
+      "@type": "Offer",
+      name: labelOf(v.category) || v.title,
+      price: v.price,
+      priceCurrency: "INR",
+      itemOffered: { "@type": "Service", name: labelOf(v.category) || v.title },
+    })),
+  };
+
   return (
     <div className="wrap" style={{ padding: "30px 16px 40px" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <Link href="/browse" className="note">Back to all sellers</Link>
       <div className="profile">
         <div className="card">

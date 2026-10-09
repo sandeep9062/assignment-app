@@ -1,10 +1,26 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BRAND } from "@/data/mock";
 import { getUser } from "@/lib/auth";
 import { getJob, labelOf } from "@/lib/queries";
 import OfferForm from "@/components/OfferForm";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const job = await getJob(id);
+  if (!job) return { title: "Job not found", robots: { index: false, follow: false } };
+  const bits = [labelOf(job.category), job.college, job.course].filter(Boolean);
+  const description = `${job.title}${bits.length ? ` — ${bits.join(" · ")}` : ""}. Budget ${job.budget ? `₹${job.budget}` : "open"}, due in ${job.due}. Sellers, send your offer on ${BRAND.name}.`;
+  return {
+    title: job.title,
+    description,
+    // Individual job posts are short-lived; keep them out of the index but let links be followed.
+    robots: { index: false, follow: true },
+    openGraph: { title: job.title, description, type: "website" },
+  };
+}
 
 export default async function JobPage({ params }) {
   const { id } = await params;

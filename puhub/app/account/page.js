@@ -4,7 +4,11 @@ import { getUser } from "@/lib/auth";
 import { myJobs } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "My account | Likhai" };
+
+export const metadata = {
+  title: "My account",
+  robots: { index: false, follow: false },
+};
 
 const SELLER_LINE = {
   none: null,

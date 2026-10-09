@@ -5,6 +5,32 @@ import SellerCard from "@/components/SellerCard";
 
 export const dynamic = "force-dynamic";
 
+const SITE = `https://${BRAND.domain}`;
+
+export const metadata = {
+  title: { absolute: `${BRAND.name}: handwritten work and practical files in ${BRAND.city}` },
+  description: `${BRAND.tagline} Hire students in ${BRAND.city} for fair copies, practical files, notes and presentations. Pick by handwriting sample, pay safely, get it at your door.`,
+  alternates: { canonical: "/" },
+};
+
+// Service catalogue markup so search engines understand what the marketplace offers.
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `${BRAND.name} services`,
+  itemListElement: CATEGORIES.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: c.label,
+      description: c.blurb,
+      areaServed: { "@type": "City", name: BRAND.city },
+      url: `${SITE}/browse?cat=${c.slug}`,
+    },
+  })),
+};
+
 // The home page should still load if the database is down.
 const safe = (p) => p.catch(() => []);
 
@@ -12,6 +38,10 @@ export default async function Home() {
   const [sellers, jobs] = await Promise.all([safe(listSellers({ limit: 4 })), safe(listOpenJobs(3))]);
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
       <div className="wrap hero">
         <div>
           <h1>

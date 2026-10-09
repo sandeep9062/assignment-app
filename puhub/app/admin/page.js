@@ -4,7 +4,11 @@ import { pendingSellers } from "@/lib/queries";
 import ApproveButtons from "@/components/ApproveButtons";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Seller applications | Likhai" };
+
+export const metadata = {
+  title: "Seller applications",
+  robots: { index: false, follow: false },
+};
 
 export default async function Admin() {
   const user = await getUser();

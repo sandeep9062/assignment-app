@@ -1,8 +1,22 @@
 import Link from "next/link";
+import { BRAND } from "@/data/mock";
 import { listOpenJobs } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Open jobs | Likhai" };
+
+const SITE = `https://${BRAND.domain}`;
+
+export const metadata = {
+  title: "Open jobs",
+  description: `Live student requests for fair copies, practical files, notes and more in ${BRAND.city}. Approved sellers, browse open jobs and send your offer.`,
+  alternates: { canonical: "/jobs" },
+  openGraph: {
+    title: `Open jobs | ${BRAND.name}`,
+    description: `Live student requests for fair copies, practical files, notes and more in ${BRAND.city}. Approved sellers, send your offer.`,
+    url: `${SITE}/jobs`,
+    type: "website",
+  },
+};
 
 export default async function Jobs() {
   const jobs = await listOpenJobs(50);

@@ -4,7 +4,12 @@ import { getUser } from "@/lib/auth";
 import SellerApplyForm from "@/components/SellerApplyForm";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Become a seller | Likhai" };
+
+export const metadata = {
+  title: "Become a seller",
+  description: "Earn from your neat handwriting or your notes, design and typing skills. Apply as a student seller, share a sample and start getting orders.",
+  robots: { index: false, follow: false },
+};
 
 export default async function BecomeSeller() {
   const user = await getUser();

@@ -3,7 +3,12 @@ import { getUser } from "@/lib/auth";
 import PostJobForm from "@/components/PostJobForm";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Post a job | Likhai" };
+
+export const metadata = {
+  title: "Post a job",
+  description: "Tell us what you need written, filed or printed. Pick your subject, deadline and budget, then get offers from students near you.",
+  robots: { index: false, follow: false },
+};
 
 export default async function PostJob() {
   const user = await getUser();
