@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf9f7;
+  --foreground: #18181b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-hand: var(--font-hand), cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+.font-hand {
+  font-family: var(--font-hand), "Segoe Print", "Bradley Hand", cursive;
+}
+
+.lined-paper {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    #e7e5e4 27px,
+    #e7e5e4 28px
+  );
+  line-height: 28px;
+}
+
+.dotted-bg {
+  background-image: radial-gradient(#d6d3d1 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(var(--tw-rotate, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--tw-rotate, 0deg)); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float-slow 7s ease-in-out 1.2s infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+::selection {
+  background: #fbbf24;
+  color: #18181b;
+}

@@ -1,0 +1,178 @@
+export const CHANDIGARH_COLLEGES = [
+  {
+    name: "Panjab University (PU)",
+    area: "Sector 14 & 25",
+    courses: "BA • B.Com • B.Sc • MA • MBA (UBS) • LLB",
+    type: "University",
+    orders: "4,200+ orders",
+    emoji: "🎓",
+  },
+  {
+    name: "UIET, Panjab University",
+    area: "Sector 25, South Campus",
+    courses: "B.E. CSE • ECE • ME • Practical files",
+    type: "Engineering",
+    orders: "1,150+ orders",
+    emoji: "💻",
+  },
+  {
+    name: "PEC Chandigarh",
+    area: "Sector 12",
+    courses: "B.Tech • M.Tech • Workshop files",
+    type: "Engineering",
+    orders: "980+ orders",
+    emoji: "⚙️",
+  },
+  {
+    name: "Chandigarh University (CU)",
+    area: "Gharuan, Mohali",
+    courses: "B.Tech • BBA • MBA • BCA • Hotel Mgmt",
+    type: "University",
+    orders: "2,800+ orders",
+    emoji: "🏛️",
+  },
+  {
+    name: "Chitkara University",
+    area: "Rajpura, Tricity",
+    courses: "B.E. • BBA • Design • Nursing",
+    type: "University",
+    orders: "1,300+ orders",
+    emoji: "🏫",
+  },
+  {
+    name: "DAV College",
+    area: "Sector 10",
+    courses: "BA • B.Com • B.Sc • MA",
+    type: "Arts & Commerce",
+    orders: "1,900+ orders",
+    emoji: "📚",
+  },
+  {
+    name: "MCM DAV College for Women",
+    area: "Sector 36",
+    courses: "BA • B.Com • B.Sc • PG Diploma",
+    type: "Arts & Commerce",
+    orders: "1,600+ orders",
+    emoji: "👩‍🎓",
+  },
+  {
+    name: "GGDSD College",
+    area: "Sector 32",
+    courses: "B.Com • BBA • BCA • B.Sc IT",
+    type: "Arts & Commerce",
+    orders: "1,450+ orders",
+    emoji: "📊",
+  },
+  {
+    name: "Govt College for Girls (GCG)",
+    area: "Sector 11",
+    courses: "BA • B.Sc • B.Com • M.Sc",
+    type: "Arts & Commerce",
+    orders: "1,100+ orders",
+    emoji: "🌸",
+  },
+  {
+    name: "PGGC Sector 11 & Sector 46",
+    area: "Sector 11 / 46",
+    courses: "BA • B.Com • BCA • PG Courses",
+    type: "Arts & Commerce",
+    orders: "950+ orders",
+    emoji: "🏫",
+  },
+  {
+    name: "CCET Chandigarh",
+    area: "Sector 26",
+    courses: "B.E. CSE • Civil • Mech • Practicals",
+    type: "Engineering",
+    orders: "720+ orders",
+    emoji: "🔧",
+  },
+  {
+    name: "GMCH Sector 32 & PGIMER",
+    area: "Sector 12 / 32",
+    courses: "Nursing • MBBS notes • Anatomy files",
+    type: "Medical",
+    orders: "860+ orders",
+    emoji: "🩺",
+  },
+  {
+    name: "IGNOU Regional Centre",
+    area: "Sector 9 + Study centres Tricity",
+    courses: "BAG • BCOMG • MAPC • MBA • MCA",
+    type: "Distance",
+    orders: "3,100+ orders",
+    emoji: "📝",
+  },
+  {
+    name: "UILS & Dept. of Laws, PU",
+    area: "Sector 14, PU Campus",
+    courses: "BA LLB • LLB • LLM projects",
+    type: "Law",
+    orders: "640+ orders",
+    emoji: "⚖️",
+  },
+  {
+    name: "IISER Mohali • NIPER Mohali",
+    area: "Sector 81, Mohali",
+    courses: "BS-MS • Pharma • Lab records",
+    type: "Science",
+    orders: "410+ orders",
+    emoji: "🔬",
+  },
+  {
+    name: "GCECT + Polytechnics Tricity",
+    area: "Mohali • Panchkula • Zirakpur",
+    courses: "Diploma • B.Tech LEET files",
+    type: "Engineering",
+    orders: "520+ orders",
+    emoji: "🧰",
+  },
+];
+
+export const COLLEGE_FILTERS = [
+  "All",
+  "University",
+  "Engineering",
+  "Arts & Commerce",
+  "Medical",
+  "Law",
+  "Distance",
+  "Science",
+];
+
+export const AREAS_SERVED = [
+  { sector: "Sector 17", note: "Pickup point • 30-min" },
+  { sector: "Sector 34 & 35", note: "Same-day delivery" },
+  { sector: "Sector 15, 22 & Panjab University", note: "Campus delivery" },
+  { sector: "Sector 32, 36, 42, 46", note: "College gate delivery" },
+  { sector: "Mohali Phase 3B2, 7, 10", note: "Same-day courier" },
+  { sector: "Panchkula Sec 20, 21", note: "Same-day courier" },
+  { sector: "Zirakpur & Kharar", note: "Next-day delivery" },
+  { sector: "CU Gharuan & Chitkara", note: "Hostel delivery" },
+];
+
+export const CHANDIGARH_FAQS = [
+  {
+    q: "Do you deliver handwritten assignments in Chandigarh on the same day?",
+    a: "Yes. For Sectors 14–46, Mohali and Panchkula we offer same-day hand delivery for ready notes, and 24–48 hr writing for fresh assignments. Pickup is available near Sector 17 & Sector 34. PDF always comes first on WhatsApp so you never miss a deadline.",
+  },
+  {
+    q: "Which Chandigarh colleges do you write for?",
+    a: "Panjab University (all departments + UIET + UILS + UBS), PEC, DAV Sector 10, MCM DAV 36, SD College 32, GCG 11, PGGC 11/46, CCET 26, GMCH & PGIMER nursing, Chandigarh University, Chitkara, plus IGNOU Regional Centre Chandigarh (BAG, BCOMG, MAPC, MBA). We follow each college's cover-page, margin and word-limit format.",
+  },
+  {
+    q: "Can I get notes in my own handwriting for PU / IGNOU submission?",
+    a: "Yes — send one photo of your handwriting on WhatsApp. Our Chandigarh writers match slant, spacing and ink. You get a free 1-page sample, then live photo proofs before final payment.",
+  },
+  {
+    q: "What are charges in Chandigarh?",
+    a: "Typed ₹49/page, handwritten ₹79/page, IGNOU full subject ₹499–₹899, practical files from ₹999, handwritten notes PDF ₹299–₹799/subject. Spiral + hand delivery in Tricity ₹149. Only 30% advance, rest after proofs.",
+  },
+];
+
+export const LOCAL_STATS = [
+  { n: "12,400+", l: "Orders in Tricity" },
+  { n: "4.9★", l: "2,800+ Google reviews" },
+  { n: "24–48 hrs", l: "Standard delivery" },
+  { n: "99.2%", l: "On-time in Chandigarh" },
+];
