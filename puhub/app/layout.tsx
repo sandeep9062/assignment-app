@@ -12,6 +12,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import { ToastProvider } from "@/components/Toaster";
 import { BRAND } from "@/data/mock";
 
@@ -124,6 +125,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ToastProvider>
           <Navbar />
           <main>{children}</main>
+          <BackToTop />
           <Footer />
         </ToastProvider>
       </body>
