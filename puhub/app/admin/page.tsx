@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getUser } from "@/lib/auth";
-import { pendingSellers, allUsers } from "@/lib/queries";
+import { pendingSellers, allUsers, contactMessages } from "@/lib/queries";
 import ApproveButtons from "@/components/ApproveButtons";
 import ActiveToggle from "@/components/ActiveToggle";
 
@@ -31,7 +31,7 @@ function Badge({ text, tone }: { text: string; tone: "blue" | "green" | "amber" 
 export default async function Admin() {
   const user = await getUser();
   if (!user?.isAdmin) notFound(); // don't reveal that this page exists
-  const [list, users] = await Promise.all([pendingSellers(), allUsers()]);
+  const [list, users, inbox] = await Promise.all([pendingSellers(), allUsers(), contactMessages()]);
   return (
     <div className="wrap" style={{ paddingBottom: 30, maxWidth: 980 }}>
       <div className="page-h"><h1>Admin</h1><p className="sub">Review seller applications and keep an eye on accounts.</p></div>
@@ -96,6 +96,28 @@ export default async function Admin() {
           </tbody>
         </table>
       </div>
+
+      <h2 style={{ fontFamily: "var(--hand)", fontSize: "1.6rem", margin: "26px 0 10px" }}>
+        Contact messages <Badge text={String(inbox.length)} tone={inbox.length ? "amber" : "grey"} />
+      </h2>
+      {inbox.length ? inbox.map((m) => (
+        <div key={m.id} className="card" style={{ marginBottom: 12 }}>
+          <div className="row" style={{ alignItems: "flex-start", flexWrap: "wrap" }}>
+            <div style={{ minWidth: 0 }}>
+              <p style={{ margin: 0, fontWeight: 700 }}>
+                {m.name} <Badge text={m.topic} tone="blue" />
+              </p>
+              <p className="note" style={{ margin: "2px 0" }}>
+                {m.email}{m.phone ? ` · WhatsApp ${m.phone}` : ""} · {m.at}
+              </p>
+              <p style={{ margin: "6px 0 0", overflowWrap: "anywhere" }}>{m.message}</p>
+            </div>
+            <a className="btn sm" href={`mailto:${m.email}?subject=${encodeURIComponent(`Re: ${m.topic} — Likhai support`)}`}>
+              Reply
+            </a>
+          </div>
+        </div>
+      )) : <div className="card ok"><div className="big">No messages</div><p>Messages from the /contact page show up here.</p></div>}
     </div>
   );
 }

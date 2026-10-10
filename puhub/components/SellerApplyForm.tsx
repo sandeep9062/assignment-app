@@ -2,7 +2,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
-import { CATEGORIES, COLLEGES } from "@/data/mock";
+import { CATEGORIES, COLLEGES, BRAND, FEES, payoutExample } from "@/data/mock";
 import { api } from "@/lib/client";
 import { useToast } from "@/components/Toaster";
 
@@ -56,6 +56,36 @@ export default function SellerApplyForm({ defaults }: { defaults: SellerApplyDef
     <form className="form" onSubmit={submit}>
       <h2 style={{ marginTop: 0, fontFamily: "var(--hand)" }}>Become a seller</h2>
       <p className="sub">Use your handwriting and skills to earn. Set your own prices.</p>
+
+      {/* Fees and college rules, stated before anyone signs up. */}
+      <div className="seller-fees">
+        <div className="row">
+          <div>
+            <p className="seller-fees-k">What you keep</p>
+            <p className="seller-fees-v">{FEES.sellerKeepsPct}%</p>
+            <p className="note" style={{ margin: 0 }}>of the price you agree on</p>
+          </div>
+          <div>
+            <p className="seller-fees-k">Platform fee</p>
+            <p className="seller-fees-v">{FEES.commissionPct}%</p>
+            <p className="note" style={{ margin: 0 }}>charged only on completed orders</p>
+          </div>
+          <div>
+            <p className="seller-fees-k">To join</p>
+            <p className="seller-fees-v">Free</p>
+            <p className="note" style={{ margin: 0 }}>no listing or subscription fee</p>
+          </div>
+        </div>
+        <p className="note" style={{ margin: "10px 0 0" }}>
+          <b>Example:</b> {payoutExample(300)}. {BRAND.name} covers the payment
+          charges and delivery inside {BRAND.city}, so nothing else is deducted.
+          Buyers pay the price you quote — they are charged nothing extra. See{" "}
+          <Link href="/terms#fees" style={{ color: "var(--blue)", fontWeight: 600 }}>Section 5 of the Terms</Link>{" "}
+          for the full breakdown, and{" "}
+          <Link href="/terms#college-rules" style={{ color: "var(--blue)", fontWeight: 600 }}>Section 6</Link>{" "}
+          for the college rules below.
+        </p>
+      </div>
       <div className="two">
         <div><label htmlFor="phone">Mobile number (WhatsApp)</label><input id="phone" name="phone" required inputMode="tel" pattern="[6-9][0-9]{9}" defaultValue={defaults.phone} placeholder="10-digit number" /></div>
         <div><label htmlFor="course">Course and year</label><input id="course" name="course" required maxLength={80} placeholder="e.g. B.Com 2nd year" /></div>
@@ -90,9 +120,19 @@ export default function SellerApplyForm({ defaults }: { defaults: SellerApplyDef
       <p className="note">Photo samples are not uploaded here yet. After you apply, we will ask for them on WhatsApp.</p>
       <label style={{ fontWeight: 400 }}>
         <input type="checkbox" name="agree" required style={{ width: "auto", marginRight: 8 }} />
-        I will not misrepresent work or break my college&apos;s rules, and I agree to the{" "}
+        I agree to the{" "}
+        <Link href="/terms#fees" style={{ color: "var(--blue)", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 3 }}>
+          fee terms
+        </Link>{" "}
+        ({FEES.commissionPct}% platform fee, I keep {FEES.sellerKeepsPct}%), and I
+        confirm that I will follow{" "}
+        <Link href="/terms#college-rules" style={{ color: "var(--blue)", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 3 }}>
+          my college&rsquo;s rules
+        </Link>
+        , will only take work I can do honestly and originally, and will not help
+        anyone break their college&rsquo;s academic rules. See the{" "}
         <Link href="/terms" style={{ color: "var(--blue)", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 3 }}>
-          seller terms
+          full Terms
         </Link>
         .
       </label>

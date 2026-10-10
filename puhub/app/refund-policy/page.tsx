@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
-import { BRAND } from "@/data/mock";
+import { BRAND, WHATSAPP_NUMBER } from "@/data/mock";
 
 const SITE = `https://${BRAND.domain}`;
 
@@ -159,12 +159,34 @@ export default function RefundPage() {
         an alternative. We are not responsible for delays caused by your bank
         or payment provider, but we will help you trace the money.
       </p>
+      <p>
+        No platform fee is charged on a cancelled or refunded order — the seller
+        simply is not paid for it. Our fees are set out in{" "}
+        <a href="/terms#fees">Section 5 of the Terms</a>.
+      </p>
 
       <h2>9. Changes to this policy</h2>
       <p>
         We may update this Refund Policy from time to time. The
         &quot;Last updated&quot; date at the top shows the latest version;
         changes will be announced on the site or by email.
+      </p>
+
+      <h2>10. Contact us about a refund</h2>
+      <p>
+        Include your order ID and the reason, and we will take it from there.
+        Email <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>,{" "}
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Likhai! I need help with a refund. Order ID: ___")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          message us on WhatsApp
+        </a>
+        , or use our <a href="/contact">contact page</a> (choose
+        &quot;Payment or refund&quot;). See also our{" "}
+        <a href="/terms">Terms of Service</a> and{" "}
+        <a href="/privacy-policy">Privacy Policy</a>.
       </p>
     </LegalPage>
   );

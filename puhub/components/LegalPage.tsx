@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { BRAND } from "@/data/mock";
+import { BRAND, WHATSAPP_NUMBER } from "@/data/mock";
 
 // Cross-links so every policy page points at the other two (Razorpay checks
 // that Terms, Privacy and Refund policies exist and are linked).
@@ -50,8 +50,16 @@ export default function LegalPage({
       <div className="legal-contact">
         <p style={{ margin: 0 }}>
           Questions about this page? Email{" "}
-          <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a> and we will reply
-          within 2 business days.
+          <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>,{" "}
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi Likhai! I have a question about your ${title.toLowerCase()}: ___`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            chat on WhatsApp
+          </a>
+          , or use our <a href="/contact">contact page</a> — we reply within 2
+          business days.
         </p>
       </div>
     </div>

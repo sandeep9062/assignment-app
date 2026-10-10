@@ -460,4 +460,43 @@ details p{margin:8px 0 0;color:var(--muted)}
 @media(max-width:620px){
   .wa-float{right:16px;bottom:calc(76px + var(--sab))}
 }
+
+/* fees panel on the seller application form — shows what a seller keeps
+   before they commit, so there is no surprise at payout time */
+.seller-fees{
+  margin:18px 0 20px;
+  padding:16px 18px;
+  border:2px dashed var(--edge);
+  border-radius:14px;
+  background:#F7F9FD;
+}
+.seller-fees .row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px 26px;
+  align-items:flex-start;
+}
+.seller-fees .row>div{min-width:104px}
+.seller-fees-k{
+  margin:0;
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.seller-fees-v{
+  margin:2px 0 0;
+  font-family:var(--hand);
+  font-size:1.85rem;
+  font-weight:700;
+  line-height:1.05;
+  color:var(--blue);
+}
+.seller-fees .note{
+  font-size:.85rem;
+  line-height:1.45;
+  color:var(--muted);
+}
 } /* end @layer components */
+

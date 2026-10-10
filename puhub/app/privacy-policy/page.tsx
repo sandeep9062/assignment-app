@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
-import { BRAND } from "@/data/mock";
+import { BRAND, WHATSAPP_NUMBER } from "@/data/mock";
 
 const SITE = `https://${BRAND.domain}`;
 
@@ -173,8 +173,18 @@ export default function PrivacyPage() {
       <h2>11. Contact</h2>
       <p>
         For any privacy question, email{" "}
-        <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>. See also our{" "}
-        <a href="/terms">Terms of Service</a> and{" "}
+        <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a> (write{" "}
+        &quot;Privacy request&quot; in the subject),{" "}
+        <a
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Likhai! I have a privacy question: ___")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp us
+        </a>
+        , or use our <a href="/contact">contact page</a>. We reply within 2
+        business days, and never later than 30 days for data requests. See also
+        our <a href="/terms">Terms of Service</a> and{" "}
         <a href="/refund-policy">Refund Policy</a>.
       </p>
     </LegalPage>

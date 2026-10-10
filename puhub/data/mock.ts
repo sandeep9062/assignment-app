@@ -20,6 +20,26 @@ export const BRAND = {
   hours: "10 am – 8 pm, Monday to Saturday",
 };
 
+/**
+ * Platform fees — the single source of truth for the numbers we quote.
+ * Used by /terms (section 5), the seller application form and the FAQ, so the
+ * figure can never drift between pages. Change it here and everywhere updates.
+ */
+export const FEES = {
+  /** Commission Likhai keeps from every completed order. */
+  commissionPct: 10,
+  /** What the seller receives. */
+  sellerKeepsPct: 90,
+  /** Extra amount a buyer is charged on top of the agreed price (0 = free for buyers). */
+  buyerExtra: 0,
+  /** Minimum order value in ₹, so tiny jobs are still worth a seller's time. */
+  minOrder: 30,
+};
+
+/** "On a ₹300 order you keep ₹270" — used in the seller form and the FAQ. */
+export const payoutExample = (order: number): string =>
+  `On a ₹${order} order you keep ₹${Math.round((order * FEES.sellerKeepsPct) / 100)}`;
+
 // Sample content for the design preview. Replace with real data once the backend is connected.
 export interface Review { by: string; text: string }
 
@@ -368,6 +388,18 @@ export const FAQ: Faq[] = [
   {
     q: "What if I don't like the work?",
     a: "Each order includes one revision round, and you can raise a dispute from the order page.",
+  },
+  {
+    q: "What does Likhai charge?",
+    a: `Likhai keeps a ${FEES.commissionPct}% platform fee from each completed order. ${payoutExample(300)}. The price you agree on is the price you pay — there is no separate charge to buyers, and delivery inside Chandigarh is included.`,
+  },
+  {
+    q: "How much does a seller keep?",
+    a: `Sellers keep ${FEES.sellerKeepsPct}% of the agreed price. Payment is held until the buyer confirms delivery, then transferred to your bank or UPI. Any tax on your earnings is yours to declare.`,
+  },
+  {
+    q: "Do I have to follow my college's rules?",
+    a: "Yes. You are responsible for your own college's rules, in both directions. Sellers should only take work they can do honestly and originally; buyers should only use delivered work in ways their college allows. Check your college's academic-integrity policy before ordering.",
   },
   {
     q: "How do I contact you?",
