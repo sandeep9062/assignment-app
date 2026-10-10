@@ -58,10 +58,10 @@ export default async function Admin() {
         All users <Badge text={String(users.length)} tone="blue" />
       </h2>
       <div className="card" style={{ padding: 0, overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: ".9rem", minWidth: 720 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: ".9rem", minWidth: 840 }}>
           <thead>
             <tr>
-              {["Name", "Email", "Phone", "College", "Role", "Status", "Joined"].map((h) => (
+              {["Name", "Email", "Phone", "College", "Role", "Status", "Active", "Joined"].map((h) => (
                 <th key={h} style={{ textAlign: "left", padding: "12px 14px", borderBottom: "2px solid var(--edge)", whiteSpace: "nowrap", fontSize: ".78rem", textTransform: "uppercase", letterSpacing: ".04em", color: "var(--muted)" }}>{h}</th>
               ))}
             </tr>
@@ -84,11 +84,14 @@ export default async function Admin() {
                     />
                   )}
                 </td>
+                <td style={{ padding: "10px 14px", borderBottom: "1px solid var(--edge)" }}>
+                  {u.id === String(user._id) ? <span className="note" title="You cannot deactivate your own account">—</span> : <ActiveToggle id={u.id} active={u.active} />}
+                </td>
                 <td style={{ padding: "10px 14px", borderBottom: "1px solid var(--edge)", whiteSpace: "nowrap", color: "var(--muted)" }}>{u.joined}</td>
               </tr>
             ))}
             {!users.length && (
-              <tr><td colSpan={7} style={{ padding: 18, textAlign: "center", color: "var(--muted)" }}>No users yet.</td></tr>
+              <tr><td colSpan={8} style={{ padding: 18, textAlign: "center", color: "var(--muted)" }}>No users yet.</td></tr>
             )}
           </tbody>
         </table>

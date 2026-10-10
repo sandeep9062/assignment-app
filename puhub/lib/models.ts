@@ -53,7 +53,6 @@ export interface IUser {
   isAdmin: boolean;
   // Inactive accounts cannot log in (existing sessions also lose API access).
   isActive: boolean;
-  isActive: boolean;
   // none -> pending (applied) -> approved (we checked the sample) | rejected
   sellerStatus: SellerStatus;
   sellerProfile: SellerProfile;
@@ -76,7 +75,6 @@ const UserSchema = new Schema<IUser>(
     college: { type: String, default: "" },
     city: { type: String, default: "Chandigarh" },
     bio: { type: String, default: "" },
-    isActive: { type: Boolean, default: true },
     isSeller: { type: Boolean, default: false },
     isAdmin: { type: Boolean, default: false },
     isActive: { type: Boolean, default: true },
