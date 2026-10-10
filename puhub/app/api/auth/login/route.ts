@@ -21,6 +21,7 @@ export async function POST(req: NextRequest) {
   const user = await User.findOne({ email });
   const ok = await checkPassword(data.password, user?.passwordHash || DUMMY);
   if (!user || !ok) return fail("Email or password is wrong.", 401);
+  if (user.isActive === false) return fail("This account is deactivated. Contact the admin.", 403);
   await setSession(user);
   return json({ user: { id: String(user._id), name: user.name, email: user.email, isSeller: user.isSeller, isAdmin: !!user.isAdmin } });
 }

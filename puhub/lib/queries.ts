@@ -310,6 +310,39 @@ export async function myJobs(userId: string | Types.ObjectId): Promise<MyJob[]> 
   }));
 }
 
+export interface AdminUserRow {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  college: string;
+  role: string;
+  sellerStatus: string;
+  active: boolean;
+  joined: string;
+}
+
+// Admin page: every account, newest first. passwordHash is never selected.
+export async function allUsers(limit = 500): Promise<AdminUserRow[]> {
+  await connectDB();
+  const users = await User.find({})
+    .select("name email phone college isSeller isAdmin isActive sellerStatus createdAt")
+    .sort({ createdAt: -1 })
+    .limit(limit)
+    .lean();
+  return users.map((u) => ({
+    id: String(u._id),
+    name: u.name,
+    email: u.email || "",
+    phone: u.phone || "",
+    college: u.college || "",
+    role: u.isAdmin ? "Admin" : u.isSeller ? "Seller" : "Student",
+    sellerStatus: u.sellerStatus,
+    active: u.isActive !== false, // docs saved before this field existed count as active
+    joined: formatDate((u as { createdAt?: Date }).createdAt),
+  }));
+}
+
 export interface PendingSeller {
   id: string;
   name: string;

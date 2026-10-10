@@ -73,5 +73,6 @@ export async function getUser() {
   const s = await getSessionLight();
   if (!s || !/^[0-9a-f]{24}$/i.test(String(s.id))) return null;
   await connectDB();
-  return User.findById(s.id).select("-passwordHash").lean();
+  const u = await User.findById(s.id).select("-passwordHash").lean();
+  return u?.isActive === false ? null : u; // deactivated accounts lose access immediately
 }

@@ -19,6 +19,7 @@ export interface UserLean {
   bio?: string;
   isSeller?: boolean;
   isAdmin?: boolean;
+  isActive?: boolean;
   sellerStatus: string;
   sellerProfile?: SellerProfileLean | null;
 }
