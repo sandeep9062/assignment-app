@@ -276,6 +276,34 @@ details p{margin:8px 0 0;color:var(--muted)}
 .page-h h1{margin:0;font-family:var(--hand);font-weight:700;font-size:clamp(1.9rem,7vw,2.8rem);line-height:1.15;text-wrap:balance}
 .note{font-size:.88rem;color:var(--muted)}
 
+/* legal pages (terms, privacy, refunds) */
+.legal{max-width:820px;padding-bottom:10px}
+.legal-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.legal-nav a,.legal-nav .on{border:1.5px solid var(--edge);background:var(--paper);border-radius:8px;padding:7px 14px;font-size:.92rem;font-weight:600;min-height:40px;display:inline-flex;align-items:center;transition:border-color .15s,color .15s}
+.legal-nav a:hover{border-color:var(--blue);color:var(--blue)}
+.legal-nav .on{background:var(--blue);border-color:var(--blue);color:#fff}
+.legal-body h2{font-family:var(--hand);font-weight:700;font-size:clamp(1.3rem,4vw,1.65rem);line-height:1.25;margin:28px 0 8px}
+.legal-body h2:first-child{margin-top:0}
+.legal-body p{margin:0 0 12px}
+.legal-body ul,.legal-body ol{margin:0 0 12px;padding-left:1.35em}
+.legal-body li{margin:0 0 7px}
+.legal-body ul li{list-style:disc}
+.legal-body ol li{list-style:decimal}
+.legal-body strong{font-weight:700}
+.legal-body a{color:var(--blue);font-weight:600;text-underline-offset:3px}
+.legal-body a:hover{text-decoration:underline}
+.legal-contact{margin-top:26px;padding-top:16px;border-top:1px solid var(--edge);color:var(--muted);font-size:.95rem}
+.legal-contact a{color:var(--blue);font-weight:600}
+
+/* contact page */
+.contact-card{display:flex;gap:14px;align-items:center;transition:border-color .15s,box-shadow .15s;min-height:76px}
+.contact-card:hover{border-color:var(--blue);box-shadow:0 10px 24px -16px rgba(27,42,155,.5)}
+.contact-card h3{font-size:1.08rem}
+.contact-ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.contact-ic.wa{background:#25D366}
+.contact-ic.mail{background:var(--blue)}
+@media(max-width:620px){.g2 .contact-card{min-height:0}}
+
 /* seller profile */
 .profile{display:grid;grid-template-columns:1.4fr .8fr;gap:16px;margin-top:16px;align-items:start}
 .profile>*{min-width:0}
@@ -408,5 +436,28 @@ details p{margin:8px 0 0;color:var(--muted)}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;scroll-padding-top:0}
+}
+
+/* floating WhatsApp bubble (above the back-to-top button) */
+.wa-float{
+  position:fixed;
+  right:24px;
+  bottom:calc(80px + var(--sab));
+  z-index:41;
+  display:grid;
+  place-items:center;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:#25D366;
+  color:#fff;
+  box-shadow:0 12px 28px -10px rgba(37,211,102,.65);
+  transition:transform .18s ease, background-color .18s ease;
+}
+.wa-float:hover{background:#1EBE5A;transform:scale(1.06)}
+.wa-float:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.wa-float{transition:none}}
+@media(max-width:620px){
+  .wa-float{right:16px;bottom:calc(76px + var(--sab))}
 }
 } /* end @layer components */

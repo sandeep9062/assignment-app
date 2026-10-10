@@ -293,6 +293,35 @@ const OrderSchema = new Schema<IOrder>(
   { timestamps: true },
 );
 
+export interface IContactMessage {
+  name: string;
+  email: string;
+  phone: string;
+  topic: string;
+  message: string;
+  user?: Types.ObjectId;
+  replied: boolean;
+}
+
+export type ContactMessageDoc = HydratedDocument<IContactMessage>;
+
+const ContactMessageSchema = new Schema<IContactMessage>(
+  {
+    name: { type: String, required: true, trim: true },
+    email: { type: String, required: true, lowercase: true, trim: true },
+    phone: { type: String, default: "" },
+    topic: {
+      type: String,
+      enum: ["Order help", "Payment or refund", "Become a seller", "Report a problem", "Something else"],
+      default: "Something else",
+    },
+    message: { type: String, required: true, trim: true },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+    replied: { type: Boolean, default: false, index: true },
+  },
+  { timestamps: true },
+);
+
 export const User: Model<IUser> =
   (models.User as Model<IUser> | undefined) ?? model<IUser>("User", UserSchema);
 export const Service: Model<IService> =
@@ -304,5 +333,8 @@ export const Request: Model<IRequest> =
 export const Order: Model<IOrder> =
   (models.Order as Model<IOrder> | undefined) ??
   model<IOrder>("Order", OrderSchema);
+export const ContactMessage: Model<IContactMessage> =
+  (models.ContactMessage as Model<IContactMessage> | undefined) ??
+  model<IContactMessage>("ContactMessage", ContactMessageSchema);
 
 export type { Types };

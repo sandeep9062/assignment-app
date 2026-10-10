@@ -14,6 +14,7 @@ export default async function Navbar() {
     { href: "/browse", label: "Browse" },
     { href: "/jobs", label: "Open jobs" },
     { href: "/how-it-works", label: "How it works" },
+    { href: "/contact", label: "Contact" },
     ...adminLink,
     session
       ? { href: "/account", label: firstName || "Account", avatar: true }

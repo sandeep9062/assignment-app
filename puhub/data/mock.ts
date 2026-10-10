@@ -1,12 +1,23 @@
 import type { CategorySlug } from "@/lib/types";
 import type { HandStyle } from "@/lib/models";
 
+// ← replace with your real WhatsApp number (E.164, no "+"), same placeholder as client/.
+export const WHATSAPP_NUMBER = "919876543210";
+
+export const waLink = (msg: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+
 export const BRAND = {
   name: "Likhai",
   tagline: "Likhna humara, chill karna tumhara.",
   sub: "Neat handwriting. Ready files. Delivered across Chandigarh.",
   city: "Chandigarh",
   domain: "puhub.vercel.app",
+  // Public contact shown on the footer, /contact page and legal pages.
+  // Replace both with your real details before launch.
+  email: "support@likhai.in",
+  phoneDisplay: "+91 98765 43210",
+  hours: "10 am – 8 pm, Monday to Saturday",
 };
 
 // Sample content for the design preview. Replace with real data once the backend is connected.
@@ -357,5 +368,9 @@ export const FAQ: Faq[] = [
   {
     q: "What if I don't like the work?",
     a: "Each order includes one revision round, and you can raise a dispute from the order page.",
+  },
+  {
+    q: "How do I contact you?",
+    a: "Chat with us on WhatsApp, email support@likhai.in, or send a message from the contact page. We usually reply the same day.",
   },
 ];

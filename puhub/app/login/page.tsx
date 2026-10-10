@@ -2,6 +2,7 @@
 import { Suspense, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { BRAND, COLLEGES, PROMISES } from "@/data/mock";
 import { api, safeNext } from "@/lib/client";
 import { useToast } from "@/components/Toaster";
@@ -129,7 +130,7 @@ function Auth() {
               {busy ? "Please wait…" : mode === "login" ? "Log in" : "Create account"}
             </button>
             <p className="mt-3.5 text-center text-[0.85rem] text-[var(--muted)]">One account works for both ordering and selling.</p>
-            {mode === "signup" && <p className="mt-2 text-center text-[0.78rem] leading-relaxed text-[var(--muted)]">By creating an account you agree to our terms and to follow your college&rsquo;s rules.</p>}
+            {mode === "signup" && <p className="mt-2 text-center text-[0.78rem] leading-relaxed text-[var(--muted)]">By creating an account you agree to our <Link href="/terms" className="text-[var(--blue)] underline underline-offset-2">terms</Link> and <Link href="/privacy-policy" className="text-[var(--blue)] underline underline-offset-2">privacy policy</Link>, and to follow your college&rsquo;s rules.</p>}
           </form>
         </div>
       </div>

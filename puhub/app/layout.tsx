@@ -13,6 +13,7 @@ import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { ToastProvider } from "@/components/Toaster";
 import SmoothScroll from "@/components/SmoothScroll";
 import { BRAND } from "@/data/mock";
@@ -128,6 +129,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Navbar />
             <main>{children}</main>
             <BackToTop />
+            <WhatsAppFloat />
             <Footer />
           </SmoothScroll>
         </ToastProvider>

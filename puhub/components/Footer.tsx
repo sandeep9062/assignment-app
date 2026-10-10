@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BRAND } from "@/data/mock";
+import { BRAND, waLink } from "@/data/mock";
 
 export default function Footer() {
   return (
@@ -11,9 +11,15 @@ export default function Footer() {
           {BRAND.tagline}
           <br />
           <span className="note">Preview build. Some sellers and jobs shown are sample profiles.</span>
+          <br />
+          <a href={waLink("Hi Likhai! I need help with: ___")} target="_blank" rel="noopener noreferrer">WhatsApp {BRAND.phoneDisplay}</a>
+          {" · "}
+          <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
         </div>
         <div>
-          <Link href="/browse">Browse</Link> · <Link href="/become-seller">Become a seller</Link> · <Link href="/how-it-works">FAQ</Link>
+          <Link href="/browse">Browse</Link> · <Link href="/become-seller">Become a seller</Link> · <Link href="/how-it-works">FAQ</Link> · <Link href="/contact">Contact</Link>
+          <br />
+          <Link href="/terms">Terms</Link> · <Link href="/privacy-policy">Privacy Policy</Link> · <Link href="/refund-policy">Refund Policy</Link>
           <br />
           Serving {BRAND.city} only · © {new Date().getFullYear()}
         </div>

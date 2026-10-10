@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { FormEvent } from "react";
+import Link from "next/link";
 import { CATEGORIES, COLLEGES } from "@/data/mock";
 import { api } from "@/lib/client";
 import { useToast } from "@/components/Toaster";
@@ -89,7 +90,11 @@ export default function SellerApplyForm({ defaults }: { defaults: SellerApplyDef
       <p className="note">Photo samples are not uploaded here yet. After you apply, we will ask for them on WhatsApp.</p>
       <label style={{ fontWeight: 400 }}>
         <input type="checkbox" name="agree" required style={{ width: "auto", marginRight: 8 }} />
-        I will not misrepresent work or break my college's rules, and I agree to the seller terms.
+        I will not misrepresent work or break my college&apos;s rules, and I agree to the{" "}
+        <Link href="/terms" style={{ color: "var(--blue)", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 3 }}>
+          seller terms
+        </Link>
+        .
       </label>
       <div style={{ marginTop: 20 }}><button className="btn" type="submit" disabled={busy}>{busy ? "Submitting" : "Submit application"}</button></div>
     </form>

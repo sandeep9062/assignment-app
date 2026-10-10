@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 import { connectDB } from "@/lib/db";
-import { User, Service, Order, Request } from "@/lib/models";
+import { User, Service, Order, Request, ContactMessage } from "@/lib/models";
 import { CATEGORIES as CATS } from "@/data/mock";
 import { escapeRegex, isId } from "@/lib/http";
 import type { ServiceLean, UserLean } from "@/lib/types";
@@ -340,6 +340,36 @@ export async function allUsers(limit = 500): Promise<AdminUserRow[]> {
     sellerStatus: u.sellerStatus,
     active: u.isActive !== false, // docs saved before this field existed count as active
     joined: formatDate((u as { createdAt?: Date }).createdAt),
+  }));
+}
+
+export interface ContactRow {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  topic: string;
+  message: string;
+  replied: boolean;
+  at: string;
+}
+
+// Admin page: support messages, newest first.
+export async function contactMessages(limit = 100): Promise<ContactRow[]> {
+  await connectDB();
+  const msgs = await ContactMessage.find({})
+    .sort({ createdAt: -1 })
+    .limit(limit)
+    .lean();
+  return msgs.map((m) => ({
+    id: String(m._id),
+    name: m.name,
+    email: m.email,
+    phone: m.phone || "",
+    topic: m.topic,
+    message: m.message,
+    replied: m.replied === true,
+    at: formatDate((m as { createdAt?: Date }).createdAt),
   }));
 }
 
