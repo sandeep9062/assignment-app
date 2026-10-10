@@ -31,11 +31,13 @@ function Auth() {
     e.preventDefault();
     setBusy(true);
     const f = Object.fromEntries(new FormData(e.currentTarget));
-    const r = await api<{ user: { name: string } }>(mode === "login" ? "/api/auth/login" : "/api/auth/signup", f);
+    const r = await api<{ user: { name: string; isAdmin?: boolean } }>(mode === "login" ? "/api/auth/login" : "/api/auth/signup", f);
     setBusy(false);
     if (!r.ok) return toast.error(r.error);
     toast.success(mode === "login" ? `Welcome back, ${r.data.user.name.split(" ")[0]}!` : "Account created. Welcome!");
-    router.push(next);
+    // Admins land on the review dashboard; everyone else honours ?next (or goes home).
+    const dest = mode === "login" && r.data.user.isAdmin ? "/admin" : next;
+    router.push(dest);
     router.refresh();
   }
 

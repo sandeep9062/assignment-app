@@ -9,10 +9,12 @@ export default async function Navbar() {
   const firstName = session?.name?.split(" ")[0];
 
   // One list drives both the desktop links and the mobile panel.
+  const adminLink: NavLink[] = session?.isAdmin ? [{ href: "/admin", label: "Admin" }] : [];
   const links: NavLink[] = [
     { href: "/browse", label: "Browse" },
     { href: "/jobs", label: "Open jobs" },
     { href: "/how-it-works", label: "How it works" },
+    ...adminLink,
     session
       ? { href: "/account", label: firstName || "Account", avatar: true }
       : { href: "/login", label: "Log in" },

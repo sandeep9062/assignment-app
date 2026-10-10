@@ -23,10 +23,10 @@ function secret(): Uint8Array {
 export const hashPassword = (pw: string): Promise<string> => bcrypt.hash(pw, 12);
 export const checkPassword = (pw: string, hash: string): Promise<boolean> => bcrypt.compare(pw, hash);
 
-type SessionUser = Pick<UserDoc, "_id" | "name">;
+type SessionUser = Pick<UserDoc, "_id" | "name" | "isAdmin">;
 
 export async function setSession(user: SessionUser): Promise<void> {
-  const token = await new SignJWT({ name: user.name })
+  const token = await new SignJWT({ name: user.name, isAdmin: !!user.isAdmin })
     .setProtectedHeader({ alg: "HS256" })
     .setSubject(String(user._id))
     .setIssuedAt()
@@ -48,6 +48,8 @@ export async function clearSession(): Promise<void> {
 export interface SessionLight {
   id: string;
   name?: string;
+  /** Signed claim, set at login. UI hint only — /admin re-checks the DB. */
+  isAdmin?: boolean;
 }
 
 // Cheap read from the cookie only (no database). Fine for showing a name in the navbar.
@@ -56,7 +58,11 @@ export async function getSessionLight(): Promise<SessionLight | null> {
   if (!token) return null;
   try {
     const { payload } = await jwtVerify(token, secret(), { algorithms: ["HS256"] });
-    return { id: String(payload.sub ?? ""), name: typeof payload.name === "string" ? payload.name : undefined };
+    return {
+      id: String(payload.sub ?? ""),
+      name: typeof payload.name === "string" ? payload.name : undefined,
+      isAdmin: payload.isAdmin === true,
+    };
   } catch {
     return null;
   }
