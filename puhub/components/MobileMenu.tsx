@@ -2,14 +2,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
+import { isActivePath, type NavLink } from "@/components/NavLinks";
 
-interface MenuLink {
-  href: string;
-  label: string;
-  cta?: boolean;
-}
-
-export default function MobileMenu({ links, loggedIn }: { links: MenuLink[]; loggedIn: boolean }) {
+export default function MobileMenu({ links, loggedIn }: { links: NavLink[]; loggedIn: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -41,34 +37,56 @@ export default function MobileMenu({ links, loggedIn }: { links: MenuLink[]; log
           <i /><i /><i />
         </span>
       </button>
-      {open && (
-        <div className="menu-overlay" onClick={() => setOpen(false)}>
-          <nav id="mobile-nav" className="menu-panel" aria-label="Mobile" onClick={(e) => e.stopPropagation()}>
-            {links.map((l) =>
-              l.cta ? (
-                <Link key={l.href} href={l.href} className="btn menu-cta" onClick={() => setOpen(false)}>
-                  {l.label}
-                </Link>
-              ) : (
-                <Link
-                  key={l.href + l.label}
-                  href={l.href}
-                  aria-current={pathname === l.href ? "page" : undefined}
-                  className={`menu-link${pathname === l.href ? " active" : ""}`}
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </Link>
-              )
-            )}
-            {loggedIn && (
-              <form action="/api/auth/logout" method="post" className="menu-logout">
-                <button type="submit" className="linklike">Log out</button>
-              </form>
-            )}
-          </nav>
-        </div>
-      )}
+      {open &&
+        // Portal to <body>: the nav has a backdrop-filter, which makes it a
+        // containing block and would clip a position:fixed overlay down to the bar.
+        createPortal(
+          <div className="menu-overlay" onClick={() => setOpen(false)}>
+            <nav id="mobile-nav" className="menu-panel" aria-label="Mobile" onClick={(e) => e.stopPropagation()}>
+              <div className="menu-head">
+                <span className="menu-brand" aria-hidden="true">
+                  Likhai
+                  <svg width="52" height="6" viewBox="0 0 62 7">
+                    <path d="M1 4.5C9 1.5 15 6 23 3.5S39 1.5 47 4s9 0 14-1.5" fill="none" stroke="#D93A4A" strokeWidth="2.2" strokeLinecap="round" />
+                  </svg>
+                </span>
+                <button type="button" className="menu-close" aria-label="Close menu" onClick={() => setOpen(false)}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+              </div>
+              {links.map((l) =>
+                l.cta ? (
+                  <Link key={l.href} href={l.href} className="btn menu-cta" onClick={() => setOpen(false)}>
+                    {l.label}
+                  </Link>
+                ) : (
+                  <Link
+                    key={l.href + l.label}
+                    href={l.href}
+                    aria-current={isActivePath(pathname, l.href) ? "page" : undefined}
+                    className={`menu-link${isActivePath(pathname, l.href) ? " active" : ""}`}
+                    onClick={() => setOpen(false)}
+                  >
+                    {l.avatar && (
+                      <span className="nav-avatar" aria-hidden="true">
+                        {l.label.trim().charAt(0).toUpperCase()}
+                      </span>
+                    )}
+                    {l.label}
+                  </Link>
+                )
+              )}
+              {loggedIn && (
+                <form action="/api/auth/logout" method="post" className="menu-logout">
+                  <button type="submit" className="linklike">Log out</button>
+                </form>
+              )}
+            </nav>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }
