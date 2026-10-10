@@ -43,4 +43,4 @@ it silently falls back to a throwaway key, so the problem only shows up after yo
 - `app/` pages and `app/api/` routes
 - `lib/` database, models, auth, validation helpers, shared queries
 - `components/` UI pieces
-- `scripts/seed.mjs` sample data
+- `scripts/seed.mts` sample data
