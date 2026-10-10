@@ -1,31 +1,31 @@
-@layer theme, base, components, utilities;
-
-/* Tailwind v4, added alongside the existing design below.
-   We import theme + utilities but NOT Preflight: Preflight resets heading and
-   paragraph spacing and makes headings inherit body font-size/weight, which would
-   change this site's hand-built notebook look. Everything after this line is the
-   original design; because it is unlayered, it always wins over Tailwind's layered
-   utilities, so nothing here changes appearance. */
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss";
 
 /* Only scan puhub's own source (sibling apps in this repo have their own Tailwind). */
 @source "../app";
 @source "../components";
 @source "../lib";
 
-/* Minimal base so Tailwind border utilities (border, ring, divide) work without
-   full Preflight. Existing borders use the full `border:` shorthand in unlayered
-   CSS, so they are unaffected. */
-@layer base {
-  *, ::before, ::after, ::backdrop {
-    border-width: 0;
-    border-style: solid;
-    border-color: currentColor;
-  }
+/* Map the notebook design tokens to Tailwind v4 theme tokens so you can use
+   utilities like bg-page, bg-paper, text-ink, text-muted, bg-blue, text-blue,
+   bg-hl, border-edge, text-ok, font-hand, font-body, etc. */
+@theme {
+  --color-page: #EEF2FB;
+  --color-paper: #FBFCFF;
+  --color-ink: #141A33;
+  --color-muted: #4E5A82;
+  --color-blue: #1B2A9B;
+  --color-blue-d: #111C75;
+  --color-brandred: #D93A4A;
+  --color-hl: #FFE14D;
+  --color-rule: #C5D5F2;
+  --color-edge: #D3DCF2;
+  --color-ok: #12805C;
+  --font-hand: "Kalam", "Hind", cursive;
+  --font-body: "Hind", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-:root{
+@layer base {
+  :root {
   --page:#EEF2FB;      /* desk */
   --paper:#FBFCFF;     /* notebook paper */
   --ink:#141A33;       /* body text */
@@ -39,13 +39,15 @@
   --ok:#12805C;
   --hand:"Kalam","Hind",cursive;
   --body:"Hind",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  html,body{margin:0}
+  body{background:var(--page);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  img,svg{max-width:100%;height:auto}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
 }
-*{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--page);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
-a{color:inherit;text-decoration:none}
-img,svg{max-width:100%}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+@layer components {
 .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
 
 /* handwriting styles used for seller samples */
@@ -239,3 +241,4 @@ details p{margin:8px 0 0;color:var(--muted)}
 .toast.info{border-left:5px solid var(--blue)}.toast.info .toast-dot{background:var(--blue)}
 @keyframes toast-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 @media (prefers-reduced-motion:reduce){.toast{animation:none}}
+} /* end @layer components */
