@@ -127,6 +127,7 @@ export default async function Home() {
             {jobs.map((j) => (
               <div key={j.id} className="job">
                 <div><h3>{j.title}</h3><small>{j.where} · due in {j.due} · {j.offers} {j.offers === 1 ? "offer" : "offers"}</small></div>
+                  <div className="note">Posted {j.posted}</div>
                 <div className="row" style={{ gap: 14 }}><span className="price">{j.budget}</span><Link href={`/jobs/${j.id}`} className="btn sm">Send offer</Link></div>
               </div>
             ))}

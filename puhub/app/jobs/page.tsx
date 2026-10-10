@@ -29,6 +29,7 @@ export default async function Jobs() {
           {jobs.map((j) => (
             <Link key={j.id} href={`/jobs/${j.id}`} className="job">
               <div><h3>{j.title}</h3><small>{j.where} · due in {j.due} · {j.offers} {j.offers === 1 ? "offer" : "offers"}</small></div>
+               <div className="note">Posted {j.posted}</div>
               <span className="price">{j.budget}</span>
             </Link>
           ))}

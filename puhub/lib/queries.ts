@@ -182,6 +182,9 @@ function dueIn(d: unknown): string {
   return days < 0 ? "overdue" : days === 0 ? "today" : days === 1 ? "1 day" : `${days} days`;
 }
 
+const formatDate = (d: Date | string | undefined): string =>
+  d ? new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "—";
+
 export interface JobCard {
   id: string;
   title: string;
@@ -190,6 +193,7 @@ export interface JobCard {
   due: string;
   offers: number;
   category: string | undefined;
+  posted: string;
 }
 
 export async function listOpenJobs(limit = 12): Promise<JobCard[]> {
@@ -203,6 +207,7 @@ export async function listOpenJobs(limit = 12): Promise<JobCard[]> {
     due: dueIn(j.deadline),
     offers: j.offers?.length || 0,
     category: slugOf(j.category),
+    posted: formatDate(j.createdAt),
   }));
 }
 
@@ -220,6 +225,7 @@ export interface JobDetail {
   deliveryMode: string;
   status: string;
   offers: number;
+  posted: string;
 }
 
 export async function getJob(id: string): Promise<JobDetail | null> {
@@ -242,6 +248,7 @@ export async function getJob(id: string): Promise<JobDetail | null> {
     deliveryMode: j.deliveryMode,
     status: j.status,
     offers: offers?.offers?.length || 0,
+    posted: formatDate(j.createdAt),
   };
 }
 

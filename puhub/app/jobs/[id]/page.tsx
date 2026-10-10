@@ -38,6 +38,7 @@ export default async function JobPage({ params }: { params: Promise<{ id: string
           {[labelOf(job.category), job.college, job.course].filter(Boolean).join(" · ")}
         </p>
         <p>{job.description}</p>
+        <div className="note" style={{ marginTop: 8 }}>Posted {job.posted}</div>
         <div className="tags">
           <span className="tag">Budget: {job.budget ? `₹${job.budget}` : "open"}</span>
           <span className="tag">Due in {job.due}</span>

@@ -138,6 +138,8 @@ export interface IRequest {
   address: string;
   status: JobStatus;
   offers: IOffer[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type RequestDoc = HydratedDocument<IRequest>;
