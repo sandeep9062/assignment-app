@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import { ToastProvider } from "@/components/Toaster";
+import SmoothScroll from "@/components/SmoothScroll";
 import { BRAND } from "@/data/mock";
 
 const SITE = `https://${BRAND.domain}`;
@@ -123,10 +124,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <ToastProvider>
-          <Navbar />
-          <main>{children}</main>
-          <BackToTop />
-          <Footer />
+          <SmoothScroll>
+            <Navbar />
+            <main>{children}</main>
+            <BackToTop />
+            <Footer />
+          </SmoothScroll>
         </ToastProvider>
       </body>
     </html>
